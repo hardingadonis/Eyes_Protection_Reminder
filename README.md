@@ -6,7 +6,7 @@ A small tool to remind you to protect your eyes with the 20:20:20 rule
 ## License
 MIT License
 
-Copyright (c) 2022 Harding Adonis
+Copyright (c) 2022 Harding Adonis, AlexPhoenix45
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
