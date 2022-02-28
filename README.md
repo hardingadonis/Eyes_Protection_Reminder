@@ -1,9 +1,42 @@
 # Eyes Protection Reminder
-A small tool to remind you to protect your eyes with the 20:20:20 rule
+
+With 20:20:20 rule, this tool will get rid of your eyes problems. Enjoys
 
 ## Introduction
 
+You are a student?
+You are a software engineer?
+You are have to use a laptop, a desktop for a long time?
+Don't worry, that tool is for you!!!
+
+**Eyes Protection Reminder** use Python for reminding the time to relax. That is really simple for using.
+
+What is special about **Eyes Protection Reminder**?
+That is is impossible to turn off without shutdown or restart.
+
+Let see...
+![Eyes Protection Reminder on Figma](https://raw.githubusercontent.com/hardingadonis/Eyes_Protection_Reminder/d8a53bd76bcfcd57f080352063cfac0f235f4ab9/imgs/Figma_Light_Theme.svg)
+
+## Install
+
+- Clone repository
+```bash
+git clone https://github.com/hardingadonis/Eyes_Protection_Reminder.git
+cd Eyes_Protection_Reminder/
+```
+
+- Install dependency packages
+```bash
+pip install schedule win10toast
+```
+
+- Run script
+```bash
+python ./main.py
+```
+
 ## License
+
 MIT License
 
 Copyright (c) 2022 [Harding Adonis](https://github.com/hardingadonis), [AlexPhoenix45](https://github.com/AlexPhoenix45)
