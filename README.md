@@ -15,6 +15,7 @@ What is special about **Eyes Protection Reminder**?
 That is is impossible to turn off without shutdown or restart.
 
 Let see...
+
 ![Eyes Protection Reminder on Figma](https://raw.githubusercontent.com/hardingadonis/Eyes_Protection_Reminder/d8a53bd76bcfcd57f080352063cfac0f235f4ab9/imgs/Figma_Light_Theme.svg)
 
 ## Install
