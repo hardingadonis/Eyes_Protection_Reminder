@@ -36,7 +36,7 @@ pip install schedule win10toast
 python ./main.py
 ```
 
-- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases)
+- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v1.0.0)
 
 ## License
 
