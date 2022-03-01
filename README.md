@@ -30,17 +30,25 @@ git clone https://github.com/hardingadonis/Eyes_Protection_Reminder.git
 cd Eyes_Protection_Reminder/
 ```
 
+*If you don't have virtualenv installed in your computer please run this command*
+```bash
+pip install virtualenv
+```
+
 - Install dependency packages
 ```bash
-pip install schedule win10toast
+./.venv/Scripts/activate
+pip install -r requirements.txt
 ```
 
 - Run script
 ```bash
+./.venv/Scripts/activate
 python ./main.py
 ```
 
 - Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v1.0.0)
+
 
 ## License
 

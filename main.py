@@ -29,6 +29,9 @@ import schedule
 import webbrowser
 import time
 
+import threading
+from app import stray
+
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
@@ -91,18 +94,60 @@ def notification():
     toaster = ToastNotifier()
     toaster.show_toast("Eyes Protection Reminder", "Time to take a rest my dear ❤ Drop your glasses, look around.. Is there anything make you interesting?", icon_path = relative_to_assets("icon_white.ico"), duration = 30)
 
+is_quit = False
 def start_reminder():
-    schedule.every(20).minutes.do(notification)
+    # job = schedule.every(waiting_time_in_seconds).seconds.do(notification)
 
-    while True:
+    while True and not is_quit: 
         schedule.run_pending()
         time.sleep(1)
 
+    # if is_turn_off: schedule.cancel_job(job)
+
 def exit_program(icon, item):
     icon.stop()
+
+def on_quit(icon):
+    global is_quit
+    is_quit = True
+
+    icon.visible = False
+    icon.stop()
+
+waiting_time_in_seconds = 1200
+def on_change_mode(seconds = 1200):
+    def func():
+       global waiting_time_in_seconds
+       waiting_time_in_seconds = seconds 
+    return func
+
+is_turn_off = False
+job = ''
+def toggle_job(icon, item, state=None):
+    global is_turn_off
+    global job
+
+    if state != None: 
+        is_turn_off = state
+    else:
+        is_turn_off = not is_turn_off
+
+    if is_turn_off: 
+        if job != '': schedule.cancel_job(job)
+    else: 
+        job = schedule.every(waiting_time_in_seconds).seconds.do(notification)
+
+def get_waiting_time():
+    return waiting_time_in_seconds
+        
+def get_turn_off_state():
+    return is_turn_off
+        
 
 if __name__ == "__main__":
     create_main_ui()
 
     if is_start_reminder == True:
+        threading.Thread(target=lambda item=None: stray(on_quit, on_change_mode, get_waiting_time, toggle_job, get_turn_off_state)).start()
+        toggle_job(None, None, False)
         start_reminder()
