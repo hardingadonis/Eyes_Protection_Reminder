@@ -6,10 +6,10 @@ With 20:20:20 rule, this tool will get rid of your eyes problems. Enjoys!!!
 
 You are a student?
 You are a software engineer?
-You are have to use a laptop, a desktop for a long time?
+Do you have to use a laptop, a desktop for a long time?
 Don't worry, that tool is for you!!!
 
-**Eyes Protection Reminder** use Python for reminding the time to relax. That is really simple for using.
+**Eyes Protection Reminder** uses Python for reminding the time to relax. That is simple for using.
 
 What is special about **Eyes Protection Reminder**?
 That is is impossible to turn off without shutdown or restart.
