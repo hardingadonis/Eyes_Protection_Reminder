@@ -11,16 +11,16 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
 
-      - uses: syphar/restore-virtualenv@v1
-        id: cache-virtualenv
-        with:
-          requirement_files: requirements.txt  # this is optional
+      # - uses: syphar/restore-virtualenv@v1
+      #   id: cache-virtualenv
+      #   with:
+      #     requirement_files: requirements.txt  # this is optional
 
-      - uses: syphar/restore-pip-download-cache@v1
-        if: steps.cache-virtualenv.outputs.cache-hit != 'true'
+      # - uses: syphar/restore-pip-download-cache@v1
+      #   if: steps.cache-virtualenv.outputs.cache-hit != 'true'
 
       - run: pip install -r requirements.txt
-        if: steps.cache-virtualenv.outputs.cache-hit != 'true'
+        # if: steps.cache-virtualenv.outputs.cache-hit != 'true'
 
       - name: Build file
-        run: pyinstaller --noconfirm --onefile --windowed --icon "assets/icon_white.ico" --name "Eyes Protection Reminder" --add-data "D:/Learning/Python/Eyes_Protection_Reminder/assets;assets/"  "main.py"
+        run: py -m pyinstaller --noconfirm --onefile --windowed --icon "assets/icon_white.ico" --name "Eyes Protection Reminder" --add-data "D:/Learning/Python/Eyes_Protection_Reminder/assets;assets/"  "main.py"
