@@ -1,0 +1,28 @@
+name: pre release
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  pre-release:
+    name: "Pre Release"
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+
+      - run: pip install -r requirements.txt
+
+      - name: Build file
+        run: pyinstaller --noconfirm --onefile --windowed --icon "assets/icon_white.ico" --name "Eyes Protection Reminder" --add-data "./assets;assets/"  "main.py"
+
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Eyes Protection Reminder"
+          files: |
+            dist/*
