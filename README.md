@@ -1,6 +1,6 @@
 # Eyes Protection Reminder
 
-With 20:20:20 rule, this tool will get rid of your eyes problems. Enjoys
+With 20:20:20 rule, this tool will get rid of your eyes problems. Enjoys!!!
 
 ## Introduction
 
