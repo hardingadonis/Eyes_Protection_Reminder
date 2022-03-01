@@ -23,4 +23,4 @@ jobs:
         # if: steps.cache-virtualenv.outputs.cache-hit != 'true'
 
       - name: Build file
-        run: pyinstaller --noconfirm --onefile --windowed --icon "assets/icon_white.ico" --name "Eyes Protection Reminder" --add-data "D:/Learning/Python/Eyes_Protection_Reminder/assets;assets/"  "main.py"
+        run: pyinstaller --noconfirm --onefile --windowed --icon "assets/icon_white.ico" --name "Eyes Protection Reminder" --add-data "./assets;assets/"  "main.py"
