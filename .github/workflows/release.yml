@@ -30,4 +30,5 @@ jobs:
           prerelease: true
           title: "Eyes_Protection_Reminder"
           files: |
+            dist/
             *.zip
