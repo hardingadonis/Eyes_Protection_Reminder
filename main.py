@@ -96,13 +96,9 @@ def notification():
 
 is_quit = False
 def start_reminder():
-    # job = schedule.every(waiting_time_in_seconds).seconds.do(notification)
-
     while True and not is_quit: 
         schedule.run_pending()
         time.sleep(1)
-
-    # if is_turn_off: schedule.cancel_job(job)
 
 def exit_program(icon, item):
     icon.stop()
