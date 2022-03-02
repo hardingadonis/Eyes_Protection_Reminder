@@ -16,11 +16,11 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Build file
-        run: pyinstaller --noconfirm --onefile --windowed --icon "assets/icon_white.ico" --name "Eyes Protection Reminder" --add-data "./assets;assets/"  "main.py"
+        run: pyinstaller --noconfirm --onefile --windowed --icon "assets/icon_white.ico" --name "Eyes_Protection_Reminder" --add-data "./assets;assets/"  "main.py"
       
       - uses: papeloto/action-zip@v1
         with:
-            files: dist/*
+            files: dist/
             dest: Eyes_Protection_Reminder.zip
 
       - uses: "marvinpinto/action-automatic-releases@latest"
