@@ -2,7 +2,7 @@ name: Build file
 
 on: 
   push:
-    branches: [main, develop]
+    branches: [develop]
 
 jobs:
   build: 

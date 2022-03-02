@@ -1,4 +1,4 @@
-# Eyes Protection Reminder
+# Eyes Protection Reminder ![](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions/workflows/build.yml/badge.svg) ![](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions/workflows/release.yml/badge.svg)
 
 With 20:20:20 rule, this tool will get rid of your eyes problems. Enjoys!!!
 
@@ -24,7 +24,7 @@ Let see...
 
 ## About Eyes Protection Reminder
 As a developer, I totally know the urging to complete our code and we are always tempted to coding until the code can run perfectly but the more code we write, the more bug we make and we spend tons of hours coding and fixing bug. Consequently, we looks at our computer continuously for a long time, it's dangerously harmful for our eyes. As a noob developer, we worry about the future that we will be completely single for the rest of our life due to our coding habit. Deeply aware of your concern, after several hours seriously learning, researching and coding, our team has invented this powerfull app which will save your life.  
-No more hours of coding consequently without taking a rest, this app will remind you to take a rest after a long time coding. In relevant to 20:20:20 rule, every 20-minute, you need to have a break, look at something far away from you, the recommended distance is 20ft, but you don't need to look at something in exact distance, you consider looking out a window or a door at an object that seem far away enough. After 20-minute relaxing, your eyes will feel more comfortable and you also have chance to walk, drink some juices or rethink what you have done until now, I promise it'll help you code more productively and comfortably.  
+No more hours of coding constantly without taking a rest, this app will remind you to take a rest after a long time coding. In relevant to 20:20:20 rule, every 20-minute, you need to have a break, look at something far away from you, the recommended distance is 20ft, but you don't need to look at something in exact distance, you consider looking out a window or a door at an object that seem far away enough. After 20-minute relaxing, your eyes will feel more comfortable and you also have chance to walk, drink some juices or rethink what you have done until now, I promise it'll help you code more productively and comfortably.  
 Generally, this app will help you more in the section of preventing digital eye strain and other health problem relate to siting too much or looking at digital screen too long (if you follow the app's instruction).  
 Have a nice coding :))
 

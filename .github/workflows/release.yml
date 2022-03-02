@@ -17,12 +17,16 @@ jobs:
 
       - name: Build file
         run: pyinstaller --noconfirm --onefile --windowed --icon "assets/icon_white.ico" --name "Eyes Protection Reminder" --add-data "./assets;assets/"  "main.py"
+      
+      - uses: papeloto/action-zip@v1
+        with:
+            files: dist/*
+            dest: Eyes_Protection_Reminder.zip
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           prerelease: true
-          title: "Eyes Protection Reminder"
-          files: |
-            dist/*
+          title: "Eyes_Protection_Reminder"
+          files: *.zip
