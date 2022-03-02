@@ -32,12 +32,12 @@ Generally, this app will help you more in the section of preventing digital eye 
 Have a nice coding :))
 
 ## Note
-> In our latest version, windows detect our application as malicious, but we assure you that our app is safe, so you need to click `More information` and click `Run anyway` the first time you run our app.
+> In our latest version, windows detect our application as malicious, but we assure you that our app is safe, so you need to click `More information` and click `Run anyway` the first time you run our app.  
 > And now, you can enjoy cái moment khi using this application.
 
 > Be cautious, so many people around the world have found that this app is so amazing and helpful, a lot of them have got addicted to `Eyes Protection Reminder`, please consider it thoroughly before it's too late, in case you can't resist using this app, we won't take responsibilities about that problem :))).
 
-> IMPORTANT: In some cases, you must turn off your `Windows Security` or your anti-virus software to download and run `Eyes Protection Reminder`.
+> IMPORTANT: In some cases, you must turn off your `Windows Security` or your anti-virus software to download and run `Eyes Protection Reminder`.  
 > REMEMBER, DON' FORGET THAT.
 
 ## New features
