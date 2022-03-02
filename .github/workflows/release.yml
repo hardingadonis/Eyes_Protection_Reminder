@@ -29,4 +29,5 @@ jobs:
           automatic_release_tag: "latest"
           prerelease: true
           title: "Eyes_Protection_Reminder"
-          files: *.zip
+          files: |
+            *.zip
