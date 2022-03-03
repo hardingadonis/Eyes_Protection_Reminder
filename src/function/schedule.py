@@ -22,3 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 """
+
+import schedule
+
+def start_schedule():
+   pass
+
+def pause_schedule():
+   pass
+
+def quit_schedule():
+   pass
