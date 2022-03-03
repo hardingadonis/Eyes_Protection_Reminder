@@ -68,7 +68,7 @@ pip install -r requirements.txt
 - Run script
 ```bash
 "./.venv/Scripts/activate"
-python ./main.py
+python ./src/main.py
 ```
 
 - Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/latest)
