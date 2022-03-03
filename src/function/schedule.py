@@ -24,12 +24,23 @@ SOFTWARE.
 """
 
 import schedule
+import threading
 
+thread = None
+
+# Init schedule for app
+# create new thread to run schedule
+def init_schedule():
+   pass
+
+# Start schedule for app
+# start or restart schedule in case user pause it
 def start_schedule():
    pass
 
 def pause_schedule():
    pass
 
+# terminate threading and quit
 def quit_schedule():
    pass
