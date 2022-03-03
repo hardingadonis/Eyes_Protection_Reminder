@@ -25,18 +25,31 @@ SOFTWARE.
 
 import schedule
 import threading
+import time
+
 
 thread = None
+
+is_quit = False
+
+# notify user to relax every period of time
+def reminder():
+    while True and not is_quit: 
+        schedule.run_pending()
+        time.sleep(1)
 
 # Init schedule for app
 # create new thread to run schedule
 def init_schedule():
-   pass
+   global thread
+   thread = threading.Thread(target=reminder)
+   print('Init thread successfully')
 
 # Start schedule for app
 # start or restart schedule in case user pause it
 def start_schedule():
-   pass
+   print('Starting schedule thread')
+   thread.start()
 
 def pause_schedule():
    pass
