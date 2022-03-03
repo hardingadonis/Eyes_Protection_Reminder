@@ -24,17 +24,19 @@ SOFTWARE.
 """
 
 import time
-from function.schedule import start_schedule, pause_schedule, quit_schedule
+import win10toast
+import function.schedule as remind
+# from function.schedule import start_schedule, pause_schedule, quit_schedule
 
 if __name__ == '__main__':
-   start_schedule()
+   remind.start_schedule()
    print('Start schedule')
-   time.sleep(15)
-   pause_schedule()
+   # time.sleep(15)
+   remind.pause_schedule()
    print('Pause schedule')
-   time.sleep(15)
-   start_schedule()
+   # time.sleep(15)
+   remind.start_schedule()
    print('Restart schedule')
-   time.sleep(15)
-   quit_schedule()
+   time.sleep(10)
+   remind.quit_schedule()
    print('Quit')
