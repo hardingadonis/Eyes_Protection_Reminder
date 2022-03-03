@@ -27,14 +27,22 @@ import schedule
 import threading
 import time
 
+from win10toast import ToastNotifier
+
+from src.features.ultilities import stateFactory
 
 thread = None
+job = None
 
 is_quit = False
 
-# notify user to relax every period of time
-def reminder():
-    while True and not is_quit: 
+get_is_quit, set_is_quit = stateFactory(False, 'is_quit')
+get_timing, set_timing = stateFactory(20, 'timing')
+get_duration, set_duration = stateFactory(3, 'duration')
+
+# prevent the app from terminating
+def loop():
+    while True and not get_is_quit(): 
         schedule.run_pending()
         time.sleep(1)
 
@@ -42,18 +50,30 @@ def reminder():
 # create new thread to run schedule
 def init_schedule():
    global thread
-   thread = threading.Thread(target=reminder)
+   thread = threading.Thread(target=loop)
    print('Init thread successfully')
 
 # Start schedule for app
 # start or restart schedule in case user pause it
 def start_schedule():
-   print('Starting schedule thread')
-   thread.start()
+   if job == None:
+      global thread
+      thread = threading.Thread(target=loop)
+      print('Init thread successfully')
+      thread.start()
+      print('Starting schedule thread')
+
+   job = schedule.every(get_timing()).seconds.do(notification)
 
 def pause_schedule():
-   pass
+   if job != None: schedule.cancel_job(job)
 
 # terminate threading and quit
 def quit_schedule():
-   pass
+   global job
+   if job != None: schedule.cancel_job(job)
+   set_is_quit(True)
+
+def notification():
+   toaster = ToastNotifier()
+   toaster.show_toast("Eyes Protection Reminder", "Time to take a rest my dear ❤ Drop your glasses, look around.. Is there anything make you interesting?", None, duration = get_duration())
