@@ -1,7 +1,8 @@
+# Folders
 .venv/
 __pycache__/
 dist/
-assets/
 build/
 
+# File types
 *.spec
