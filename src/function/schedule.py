@@ -29,16 +29,16 @@ import time
 
 from win10toast import ToastNotifier
 
-from src.features.ultilities import stateFactory
+from features.ultilities import stateFactory
 
 thread = None
 job = None
 
 is_quit = False
 
-get_is_quit, set_is_quit = stateFactory(False, 'is_quit')
-get_timing, set_timing = stateFactory(20, 'timing')
-get_duration, set_duration = stateFactory(3, 'duration')
+get_is_quit, set_is_quit = stateFactory(False)
+get_timing, set_timing = stateFactory(5, 'timing')
+get_duration, set_duration = stateFactory(5, 'duration')
 
 # prevent the app from terminating
 def loop():
@@ -56,8 +56,9 @@ def init_schedule():
 # Start schedule for app
 # start or restart schedule in case user pause it
 def start_schedule():
-   if job == None:
-      global thread
+   global job
+   global thread
+   if thread == None:
       thread = threading.Thread(target=loop)
       print('Init thread successfully')
       thread.start()
