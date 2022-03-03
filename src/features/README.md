@@ -2,12 +2,14 @@
 ### Instruction
 
 ```python
-stateFactory(initialValue -> any) -> (state, setState)
+stateFactory(initialValue: any, config_name: str) -> (state, setState)
 ```
 
 `initialValue`: initial value which will be set to `state` if no configuration has been found  
+`config_name`: configuration file name
+
 `state`: Current state  
-`setState: (value -> any)`: we can use this function to set value for current state, that state will be automatically saved to configuration file in `C:\User\{User}\AppData\Roaming\Eyes_Protection_Reminder` 
+`setState: (value: any)`: we can use this function to set value for current state, that state will be automatically saved to configuration file in `C:\User\{User}\AppData\Roaming\Eyes_Protection_Reminder` 
 
 #### Example:
 

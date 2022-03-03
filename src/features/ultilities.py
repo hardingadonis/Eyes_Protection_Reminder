@@ -5,20 +5,13 @@ DIR_PATH = os.path.join(os.environ['APPDATA'], 'Eyes_Protection_Reminder')
 
 # Don't use this function
 def _stateFactoryMaker():
-   # Unique id, each id is the name of the file which we will use to store 
-   # current state
-   index = 0
 
-   def stateFactory(initialValue):
-      # Create an unique id between each state to save in roaming
-      nonlocal index
-      index += 1
-
+   def stateFactory(initialValue, config_name: str):
       # Declare state
       state = initialValue
 
       # configuration file, which will be unique for each state
-      FILE_NAME = os.path.join(DIR_PATH, str(index))
+      FILE_NAME = os.path.join(DIR_PATH, str(config_name))
 
       # Create folder Eyes_Protection_Reminder in Roaming folder
       if not os.path.exists(DIR_PATH):
@@ -53,6 +46,7 @@ def _stateFactoryMaker():
 # create a higher-order function that create a getter and setter for a state
 #
 # @param {initialValue} initial value which will be assigned to state if no configuration file has been found
+# @param {config_name} configuration file name
 #
 # @return (state, setState) state is a variable which will be used to get current state
 #                            setState is a function which take 1 arguments as the value that we need to assign to state
