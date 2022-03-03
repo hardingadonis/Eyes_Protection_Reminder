@@ -6,7 +6,7 @@ DIR_PATH = os.path.join(os.environ['APPDATA'], 'Eyes_Protection_Reminder')
 # Don't use this function
 def _stateFactoryMaker():
 
-   def stateFactory(initialValue, config_name: str):
+   def stateFactory(initialValue, config_name: str = ''):
       # Declare state
       state = initialValue
 
@@ -22,8 +22,9 @@ def _stateFactoryMaker():
          nonlocal state
          state = value
 
-         with open(FILE_NAME, 'w') as reader:
-            reader.write(str(value))
+         if config_name != '':
+            with open(FILE_NAME, 'w') as reader:
+               reader.write(str(value))
 
       def getState():
          return state
@@ -33,7 +34,7 @@ def _stateFactoryMaker():
       # will be assigned to initialValue and in the next time we call
       # setState, the value in that file will be normal again
       try:
-         if os.path.exists(FILE_NAME):
+         if os.path.exists(FILE_NAME) and config_name != '':
             with open(FILE_NAME, 'r') as reader:
                # Convert data in the file from string to initial data type
                state = type(initialValue)(reader.read())
