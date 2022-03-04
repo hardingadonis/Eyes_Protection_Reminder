@@ -6,3 +6,4 @@ build/
 
 # File types
 *.spec
+*.pyc
