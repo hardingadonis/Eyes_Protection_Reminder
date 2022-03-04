@@ -76,24 +76,6 @@ def quit_schedule():
    if job != None: schedule.cancel_job(job)
    set_is_quit(True)
 
-width = 20
-height = 20
-color1 = 'red'
-color2 = 'blue'
-color3 = 'green'
-def create_image():
-    # Generate an image and draw a pattern
-    image = Image.new('RGB', (width, height), color1)
-    dc = ImageDraw.Draw(image)
-    dc.rectangle(
-        (width // 2, 0, width, height // 2),
-        fill=color2)
-    dc.rectangle(
-        (0, height // 2, width // 2, height),
-        fill=color2)
-
-    return image
-
 def notification():
    toaster = ToastNotifier()
    toaster.show_toast("Eyes Protection Reminder", "Time to take a rest my dear ❤ Drop your glasses, look around.. Is there anything make you interesting?", icon_path=relative_to_assets('../../assets/icon_white.ico'), duration = get_duration())
