@@ -35,11 +35,9 @@ from features.relativeLink import relative_to_assets
 thread = None
 job = None
 
-is_quit = False
-
 get_is_quit, set_is_quit = stateFactory(False)
-get_timing, set_timing = stateFactory(2, 'timing')
-get_duration, set_duration = stateFactory(5, 'duration')
+
+from config import get_timing, get_duration
 
 # prevent the app from terminating
 def loop():
