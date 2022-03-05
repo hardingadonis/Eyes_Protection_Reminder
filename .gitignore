@@ -2,7 +2,10 @@
 .venv/
 __pycache__/
 dist/
+!landingPage/dist/
 build/
+
+node_modules/
 
 # File types
 *.spec
