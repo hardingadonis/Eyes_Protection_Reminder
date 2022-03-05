@@ -1,10 +1,4 @@
-import { useState } from "react";
-import { HashRouter, Routes, Route, useNavigate } from "react-router-dom";
-import {
-	CSSTransition,
-	SwitchTransition,
-	TransitionGroup,
-} from "react-transition-group";
+import { useEffect, useState } from "react";
 import { Transition } from "@headlessui/react";
 
 import Home from "./pages/Home";
@@ -13,8 +7,6 @@ import arrow from "./assets/arrow.svg";
 import FirstPage from "./pages/FirstPage";
 import SecondPage from "./pages/SecondPage";
 import ThirdPage from "./pages/ThirdPage";
-
-import Message from "./Message";
 
 const pageMessages = [
 	"",
@@ -26,8 +18,11 @@ const pageMessages = [
 function App() {
 	const [page, setPage] = useState(0);
 
+	const eel = window["eel"];
+
 	function handleNavigate(pageIndex) {
 		return () => {
+      if (pageIndex == 4) window.close()
 			setPage(pageIndex);
 		};
 	}
@@ -64,7 +59,6 @@ function App() {
 					</div>
 				</Transition>
 			))}
-			{/* <div className="absolute w-full h-20"><Message message={pageMessages[page]} /></div> */}
 			<div className="absolute left-1/2 bottom-10 -translate-x-1/2 flex gap-3">
 				{[...Array(4)].map((_, index) => (
 					<div
