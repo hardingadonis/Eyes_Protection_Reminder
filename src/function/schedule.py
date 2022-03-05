@@ -37,7 +37,7 @@ job = None
 
 get_is_quit, set_is_quit = stateFactory(False)
 
-from config import get_timing, get_duration
+from function.config import get_timing, get_duration
 
 # prevent the app from terminating
 def loop():
@@ -76,4 +76,4 @@ def quit_schedule():
 
 def notification():
    toaster = ToastNotifier()
-   toaster.show_toast("Eyes Protection Reminder", "Time to take a rest my dear ❤ Drop your glasses, look around.. Is there anything make you interesting?", icon_path=relative_to_assets('../../assets/icon_white.ico'), duration = get_duration())
+   toaster.show_toast("Eyes Protection Reminder", "Time to take a rest my dear ❤ Drop your glasses, look around.. Is there anything make you interesting?", icon_path=relative_to_assets('../../../assets/icon_white.ico'), duration = get_duration())
