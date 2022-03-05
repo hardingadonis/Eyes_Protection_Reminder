@@ -29,8 +29,8 @@ import time
 
 from win10toast import ToastNotifier
 
-from features.stateFactory import stateFactory
-from features.relativeLink import relative_to_assets
+from utils.stateFactory import stateFactory
+from utils.relativeLink import relative_to_assets
 
 thread = None
 job = None

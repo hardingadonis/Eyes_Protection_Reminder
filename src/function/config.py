@@ -1,5 +1,5 @@
 
-from features.stateFactory import stateFactory
+from utils.stateFactory import stateFactory
 
 # Every <timing> minutes, the app will notify user to relax
 get_timing, set_timing = stateFactory(2, 'timing')
