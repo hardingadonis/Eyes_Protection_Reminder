@@ -76,4 +76,4 @@ def quit_schedule():
 
 def notification():
    toaster = ToastNotifier()
-   toaster.show_toast("Eyes Protection Reminder", "Time to take a rest my dear ❤ Drop your glasses, look around.. Is there anything make you interesting?", icon_path=relative_to_assets('../../../assets/icon_white.ico'), duration = get_duration())
+   toaster.show_toast("Eyes Protection Reminder", "Time to take a rest my dear ❤ Drop your glasses, look around.. Is there anything make you interesting?", icon_path=relative_to_assets('../../assets/icon_white.ico'), duration = get_duration())
