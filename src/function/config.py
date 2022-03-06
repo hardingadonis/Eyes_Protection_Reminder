@@ -11,6 +11,7 @@ get_duration, set_duration = stateFactory(10, 'duration')
 get_content, set_content = stateFactory('Time to take a rest my dear ❤ Drop your glasses, look around.. Is there anything make you interesting?', 'content')
 
 # App mode
-get_mode, set_mode = stateFactory('normal', 'hardcore')
+# Available mode: normal, hardcore
+get_mode, set_mode = stateFactory('normal', 'mode')
 
 # Other config ....

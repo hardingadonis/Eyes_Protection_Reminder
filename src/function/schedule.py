@@ -37,8 +37,8 @@ job = None
 
 get_is_quit, set_is_quit = stateFactory(False)
 
-from function.config import get_timing, get_duration
-
+from function.config import get_timing, get_duration, get_mode
+ 
 # prevent the app from terminating
 def loop():
     while True and not get_is_quit(): 
@@ -75,5 +75,6 @@ def quit_schedule():
    set_is_quit(True)
 
 def notification():
-   toaster = ToastNotifier()
-   toaster.show_toast("Eyes Protection Reminder", "Time to take a rest my dear ❤ Drop your glasses, look around.. Is there anything make you interesting?", icon_path=relative_to_assets('../../assets/icon_white.ico'), duration = get_duration())
+   if get_mode() != 'hardcore':
+      toaster = ToastNotifier()
+      toaster.show_toast("Eyes Protection Reminder", "Time to take a rest my dear ❤ Drop your glasses, look around.. Is there anything make you interesting?", icon_path=relative_to_assets('../../assets/icon_white.ico'), duration = get_duration())
