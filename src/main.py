@@ -31,13 +31,3 @@ from ui.landing import start_landing
 if __name__ == '__main__':
    remind.start_schedule()
    start_landing()
-   # print('Start schedule')
-   # # time.sleep(15)
-   # remind.pause_schedule()
-   # print('Pause schedule')
-   # # time.sleep(15)
-   # remind.start_schedule()
-   # print('Restart schedule')
-   # time.sleep(10)
-   # remind.quit_schedule()
-   # print('Quit')
