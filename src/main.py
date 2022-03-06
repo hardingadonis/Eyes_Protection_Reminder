@@ -27,7 +27,9 @@ import time
 import win10toast
 import function.schedule as remind
 from ui.landing import start_landing
+from function.tray import start_tray
 
 if __name__ == '__main__':
    remind.start_schedule()
+   start_tray()
    start_landing()

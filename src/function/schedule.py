@@ -35,9 +35,7 @@ from utils.relativeLink import relative_to_assets
 thread = None
 job = None
 
-get_is_quit, set_is_quit = stateFactory(False)
-
-from function.config import get_timing, get_duration, get_mode
+from function.config import get_timing, get_duration, get_mode, get_is_quit, set_is_quit, set_is_pause, get_is_pause, set_timing
  
 # prevent the app from terminating
 def loop():
@@ -55,6 +53,7 @@ def init_schedule():
 # Start schedule for app
 # start or restart schedule in case user pause it
 def start_schedule():
+   set_is_pause(False)
    global job
    global thread
    if thread == None:
@@ -66,7 +65,14 @@ def start_schedule():
    job = schedule.every(get_timing()).seconds.do(notification)
 
 def pause_schedule():
+   set_is_pause(True)
    if job != None: schedule.cancel_job(job)
+
+def change_timing(time):
+   set_timing(time)
+   global job
+   if job != None: schedule.cancel_job(job)
+   job = schedule.every(get_timing()).seconds.do(notification)
 
 # terminate threading and quit
 def quit_schedule():
@@ -77,4 +83,4 @@ def quit_schedule():
 def notification():
    if get_mode() != 'hardcore':
       toaster = ToastNotifier()
-      toaster.show_toast("Eyes Protection Reminder", "Time to take a rest my dear ❤ Drop your glasses, look around.. Is there anything make you interesting?", icon_path=relative_to_assets('../../assets/icon_white.ico'), duration = get_duration())
+      toaster.show_toast("Eyes Protection Reminder", "Time to take a rest my dear ❤ Drop your glasses, look around.. Is there anything make you interesting?", icon_path=relative_to_assets('icon_white.ico'), duration = get_duration())
