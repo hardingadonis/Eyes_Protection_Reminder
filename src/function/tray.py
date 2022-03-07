@@ -1,4 +1,3 @@
-import pystray
 from PIL import Image
 from pystray import MenuItem as item, Menu
 import webbrowser
