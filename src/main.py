@@ -24,7 +24,6 @@ SOFTWARE.
 """
 
 import time
-import win10toast
 import function.schedule as remind
 from ui.landing import start_landing
 from function.tray import start_tray
