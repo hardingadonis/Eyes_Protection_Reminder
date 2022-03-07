@@ -1,8 +1,13 @@
 # Folders
 .venv/
 __pycache__/
+node_modules/
 dist/
+!landingPage/dist/
 build/
+
+node_modules/
 
 # File types
 *.spec
+*.pyc

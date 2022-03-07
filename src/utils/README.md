@@ -14,7 +14,7 @@ stateFactory(initialValue: any, config_name: str) -> (getState, setState)
 #### Example:
 
 ```python
-getTiming, setTiming = stateFactory(100)
+getTiming, setTiming = stateFactory(100, 'timing')
 
 print(getTiming()) # 100
 
@@ -24,7 +24,7 @@ print(getTiming()) # 200
 
 #### We can declare hundreds of state with this function, for example, if we want to save `reminding time` configuration, just declare:
 ```python
-getRemindTime, setRemindingTime = stateFactory(200)
+getRemindTime, setRemindingTime = stateFactory(200, 'remindingTime')
 ```
 in a file in your directory ( i.e. `index.py`)
 and now whenever you want to get `remindingTime` or set new value to it, just import `index.py` and call the two function above
