@@ -51,6 +51,6 @@ def start_tray():
         item('Quit', on_quit)
         )
 
-    icon = pystray.Icon("Resolution Switcher", image, "Resolution Switcher", menu)
+    icon = pystray.Icon("Eyes Protection Reminder", image, "Eyes Protection Reminder", menu)
     threading.Thread(target=lambda item=None: icon.run()).start()
    
