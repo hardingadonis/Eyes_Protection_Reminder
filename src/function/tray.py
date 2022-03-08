@@ -1,3 +1,28 @@
+"""
+MIT License
+
+Copyright (c) 2022 Harding Adonis, hoanghy0112, AlexPhoenix45
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+"""
+
 import pystray
 from PIL import Image
 from pystray import MenuItem as item, Menu
@@ -16,17 +41,15 @@ def on_quit(icon):
     icon.visible = False
     icon.stop()
 
-def open_about_us(icon, item):
-    url = 'https://github.com/hardingadonis/Eyes_Protection_Reminder'
-    chrome_path = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
-    webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(chrome_path))
-    webbrowser.get('chrome').open(url)
+def open_source_code(icon, item):
+    url = "https://github.com/hardingadonis/Eyes_Protection_Reminder"
+    webbrowser.open(url)
 
 def change_mode():
-    if get_mode() == 'hardcore': 
-        set_mode('normal')
+    if get_mode() == "hardcore": 
+        set_mode("normal")
     else:
-        set_mode('hardcore')
+        set_mode("hardcore")
 
 def change_is_pause():
     if get_is_pause() == False:
@@ -35,20 +58,18 @@ def change_is_pause():
         start_schedule()
 
 def start_tray():
-    print(relative_to_assets("icon_white.ico"))
-    image = Image.open(relative_to_assets("icon_white.ico"))
+    image = Image.open(relative_to_assets("icon.ico"))
         
     menu = Menu(
-        item('Change relax time', Menu(
-            item('10 seconds', lambda item: change_timing(10), lambda item: bool(10 == get_timing())),
-            item('20 minutes', lambda item: change_timing(1200), lambda item: bool(1200 == get_timing())),
-            item('30 minutes', lambda item: change_timing(1800), lambda item: bool(1800 == get_timing())),
-            item('60 minutes', lambda item: change_timing(3600), lambda item: bool(3600 == get_timing())),
+        item("Change relax time", Menu(
+            item("10 minutes", lambda item: change_timing(600), lambda item: bool(600 == get_timing())),
+            item("20 minutes", lambda item: change_timing(1200), lambda item: bool(1200 == get_timing())),
+            item("30 minutes", lambda item: change_timing(1800), lambda item: bool(1800 == get_timing())),
+            item("60 minutes", lambda item: change_timing(3600), lambda item: bool(3600 == get_timing())),
         )),
-        item('Pause', change_is_pause, lambda item=None: get_is_pause() == True),
-        item('Hardcore mode (No relaxing)', change_mode, lambda item: bool(get_mode() == 'hardcore')),
-        item('About us', open_about_us),
-        item('Quit', on_quit)
+        item("Hardcore mode (No relaxing)", change_mode, lambda item: bool(get_mode() == "hardcore")),
+        item("Source Code", open_source_code),
+        item("Quit", on_quit)
         )
 
     icon = pystray.Icon("Eyes Protection Reminder", image, "Eyes Protection Reminder", menu)

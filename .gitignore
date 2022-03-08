@@ -5,6 +5,7 @@ node_modules/
 dist/
 !landingPage/dist/
 build/
+src/assets/
 
 node_modules/
 
