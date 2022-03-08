@@ -20,7 +20,7 @@ That is is impossible to turn off without shutdown or restart.
 
 Let see...
 
-![Eyes Protection Reminder on Figma](https://raw.githubusercontent.com/hardingadonis/Eyes_Protection_Reminder/d8a53bd76bcfcd57f080352063cfac0f235f4ab9/imgs/Figma_Light_Theme.svg)
+![Eyes Protection Reminder](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/Eyes_Protection_Reminder.gif)
 
 ## About Eyes Protection Reminder
 As a developer, I know the urging to complete our code and we are always tempted to code until the code can run perfectly but the more code we write, the more bug we make and we spend tons of hours coding and fixing the bug. Consequently, we look at our computer continuously for a long time, it's dangerously harmful to our eyes. As noob developers, we worry about the future that we will be completely single for the rest of our life due to our coding habits. Deeply aware of your concern, after several hours of seriously learning, researching, and coding, our team has invented this powerful app that will save your life.
@@ -71,7 +71,7 @@ pip install -r requirements.txt
 python ./src/main.py
 ```
 
-- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/latest)
+- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v2.x.x)
 
 ## License
 

@@ -26,7 +26,4 @@ print(getTiming()) # 200
 ```python
 getRemindTime, setRemindingTime = stateFactory(200, 'remindingTime')
 ```
-in a file in your directory ( i.e. `index.py`)
-and now whenever you want to get `remindingTime` or set new value to it, just import `index.py` and call the two function above
-
-
+In a file in your directory ( i.e. `index.py`) and now whenever you want to get `remindingTime` or set new value to it, just import `index.py` and call the two function above
