@@ -22,9 +22,10 @@ SOFTWARE.
 """
 
 import config as Config
+import language as Language
 
 if __name__ == '__main__':
     Config.LoadSettings()
-    print(Config.GetConfig("name"))
-    Config.SetConfig("name", "ALOALOALO")
+    print(Language.GetLanguage("EPR_01"))
+    Config.SaveSettings()
     pass
