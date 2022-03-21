@@ -1,0 +1,7 @@
+{
+    "name": "Eyes Protection Reminder",
+    "version": "3.0.0",
+    "time_reminder": "20",
+    "hardcode_mode": "false",
+    "language" : "en"
+}

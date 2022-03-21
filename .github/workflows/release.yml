@@ -16,18 +16,18 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Build file
-        run: pyinstaller --noconfirm --onefile --windowed --icon "assets/icon.ico" --name "Eyes_Protection_Reminder_v2.0.3" --add-data "./assets;assets/"  "src/main.py"
+        run: pyinstaller --noconfirm --onefile --windowed --icon "assets/icon.ico" --name "Eyes_Protection_Reminder_v3.0.0" --add-data "./assets;assets/"  "src/main.py"
       
       - uses: papeloto/action-zip@v1
         with:
             files: dist/
-            dest: Eyes_Protection_Reminder_v2.0.3.zip
+            dest: Eyes_Protection_Reminder_v3.0.0.zip
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "v2.x.x"
+          automatic_release_tag: "v3.x.x"
           prerelease: false
-          title: "Eyes_Protection_Reminder v2.0.3"
+          title: "Eyes_Protection_Reminder v3.0.0"
           files: |
             *.zip
