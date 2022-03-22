@@ -21,7 +21,7 @@ SOFTWARE.
 
 """
 
-import config as Config
+import epr_config as Config
 
 EN = {
     "EPR_01": "Change reminder time",

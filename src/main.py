@@ -21,11 +21,13 @@ SOFTWARE.
 
 """
 
-import config as Config
-import system_tray as SystemTray
+import epr_config as Config
+import epr_system_tray as SystemTray
+import epr_schedule as A
 
 if __name__ == '__main__':
     Config.LoadSettings()
-    SystemTray.StartSystemTray()
-    Config.SaveSettings()
+    #SystemTray.StartSystemTray()
+    #Config.SaveSettings()
+    A._notification()
     pass

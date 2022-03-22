@@ -28,8 +28,8 @@ from PIL import Image
 import threading
 import webbrowser
 
-import language as Language
-import config as Config
+import epr_language as Language
+import epr_config as Config
 
 def _chageTimeReminder_5():
     Config.SetConfig("time_reminder", "5")
