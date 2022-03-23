@@ -60,11 +60,11 @@ def _getTime() -> int:
 def _notification():
     if Config.GetConfig("hardcode_mode") == "false":
         toaster = ToastNotifier()
-        toaster.show_toast("Eyes Protection Reminder", msg = Language.GetLanguage("EPR_20"), icon_path = "assets/icon.ico", duration = 5)
+        toaster.show_toast("Eyes Protection Reminder", msg = Language.GetLanguage("EPR_20"), icon_path = Config.RelativeToAssets("icon.ico"), duration = 5)
 
 def _changeTimeReminder():
     schedule.clear()
-    schedule.every(_getTime()).seconds.do(_notification)
+    schedule.every(_getTime()).minutes.do(_notification)
 
 def _startSchedule():
     _changeTimeReminder()

@@ -23,6 +23,13 @@ SOFTWARE.
 
 import os
 import json
+from pathlib import Path
+
+OUTPUT_PATH = Path(__file__).parent
+ASSETS_PATH = OUTPUT_PATH / Path("./assets")
+
+def _relativeToAssets(path: str) -> Path:
+    return ASSETS_PATH / Path(path)
 
 # where we will save our configuration
 DIR_PATH = os.path.join(os.environ["APPDATA"], "Eyes_Protection_Reminder")
@@ -32,7 +39,7 @@ FILE_CONFIG = os.path.join(DIR_PATH, str("config.json"))
 DATA = {}
 
 def _loadDefaultSettings():
-    with open("assets/default_setting.json", "r") as in_file:
+    with _relativeToAssets("default_setting.json", "r") as in_file:
         global DATA
         DATA = json.load(in_file)
 
@@ -62,6 +69,8 @@ def _setConfig(id: str, value: str):
     global DATA
     DATA[id] = value
     _saveSettings()
+
+RelativeToAssets = _relativeToAssets
 
 LoadSettings    = _loadSettings
 SaveSettings    = _saveSettings

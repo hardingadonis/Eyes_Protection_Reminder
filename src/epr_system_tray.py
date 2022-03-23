@@ -103,7 +103,7 @@ def _onExit(system_tray):
     Schedule._isScheduleRunning = False
 
 def _startSystemTray():
-    icon = Image.open("assets/icon.ico")
+    icon = Image.open(Config.RelativeToAssets("icon.ico"))
     
     menu = Menu(
         MenuItem(Language.GetLanguage("EPR_01"), Menu(
@@ -130,7 +130,6 @@ def _startSystemTray():
     )
 
     system_tray = pystray.Icon("Eyes Protection Reminder", icon, "Eyes Protection Reminder", menu)
-    #system_tray.run()
 
     threading.Thread(target = lambda: system_tray.run()).start()
 
