@@ -30,42 +30,55 @@ import webbrowser
 
 import epr_language as Language
 import epr_config as Config
+import epr_schedule as Schedule
 
 def _chageTimeReminder_5():
     Config.SetConfig("time_reminder", "5")
+    Schedule.ChangeTimeReminder()
 
 def _chageTimeReminder_10():
     Config.SetConfig("time_reminder", "10")
+    Schedule.ChangeTimeReminder()
 
 def _chageTimeReminder_15():
     Config.SetConfig("time_reminder", "15")
+    Schedule.ChangeTimeReminder()
 
 def _chageTimeReminder_20():
     Config.SetConfig("time_reminder", "20")
+    Schedule.ChangeTimeReminder()
 
 def _chageTimeReminder_25():
     Config.SetConfig("time_reminder", "25")
+    Schedule.ChangeTimeReminder()
 
 def _chageTimeReminder_30():
     Config.SetConfig("time_reminder", "30")
+    Schedule.ChangeTimeReminder()
 
 def _chageTimeReminder_35():
     Config.SetConfig("time_reminder", "35")
+    Schedule.ChangeTimeReminder()
 
 def _chageTimeReminder_40():
     Config.SetConfig("time_reminder", "40")
+    Schedule.ChangeTimeReminder()
 
 def _chageTimeReminder_45():
     Config.SetConfig("time_reminder", "45")
+    Schedule.ChangeTimeReminder()
 
 def _chageTimeReminder_50():
     Config.SetConfig("time_reminder", "50")
+    Schedule.ChangeTimeReminder()
 
 def _chageTimeReminder_55():
     Config.SetConfig("time_reminder", "55")
+    Schedule.ChangeTimeReminder()
 
 def _chageTimeReminder_60():
     Config.SetConfig("time_reminder", "60")
+    Schedule.ChangeTimeReminder()
 
 
 def _changeHardcodeMode():
@@ -87,6 +100,7 @@ def _openSourceCode():
 def _onExit(system_tray):
     system_tray.visible = False
     system_tray.stop()
+    Schedule._isScheduleRunning = False
 
 def _startSystemTray():
     icon = Image.open("assets/icon.ico")
@@ -116,6 +130,8 @@ def _startSystemTray():
     )
 
     system_tray = pystray.Icon("Eyes Protection Reminder", icon, "Eyes Protection Reminder", menu)
-    system_tray.run()
+    #system_tray.run()
+
+    threading.Thread(target = lambda: system_tray.run()).start()
 
 StartSystemTray = _startSystemTray

@@ -23,11 +23,9 @@ SOFTWARE.
 
 import epr_config as Config
 import epr_system_tray as SystemTray
-import epr_schedule as A
+import epr_schedule as Schedule
 
 if __name__ == '__main__':
     Config.LoadSettings()
-    #SystemTray.StartSystemTray()
-    #Config.SaveSettings()
-    A._notification()
-    pass
+    SystemTray.StartSystemTray()
+    Schedule.StartSchedule()

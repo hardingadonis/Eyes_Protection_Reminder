@@ -23,12 +23,13 @@ SOFTWARE.
 
 import schedule
 import time
-import threading
 
 from win10toast import ToastNotifier
 
 import epr_language as Language
 import epr_config as Config
+
+_isScheduleRunning = True
 
 def _getTime() -> int:
     if Config.GetConfig("time_reminder") == "5":
@@ -60,4 +61,15 @@ def _notification():
     toaster = ToastNotifier()
     toaster.show_toast("Eyes Protection Reminder", msg = Language.GetLanguage("EPR_20"), icon_path = "assets/icon.ico", duration = 5)
 
-_notification = _notification
+def _changeTimeReminder():
+    schedule.clear()
+    schedule.every(_getTime()).minutes.do(_notification)
+
+def _startSchedule():
+    _changeTimeReminder()
+    while _isScheduleRunning:
+        schedule.run_pending()
+        time.sleep(1)
+
+StartSchedule = _startSchedule
+ChangeTimeReminder = _changeTimeReminder

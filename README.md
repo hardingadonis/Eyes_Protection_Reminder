@@ -71,7 +71,7 @@ pip install -r requirements.txt
 python ./src/main.py
 ```
 
-- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v2.x.x)
+- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v3.x.x)
 
 ## License
 
