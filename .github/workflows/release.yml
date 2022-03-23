@@ -21,7 +21,6 @@ jobs:
       - uses: svenstaro/upx-action@v2
         with:
             file: dist/Eyes_Protection_Reminder_v3.0.0.exe
-            args: --best
       
       - uses: papeloto/action-zip@v1
         with:
