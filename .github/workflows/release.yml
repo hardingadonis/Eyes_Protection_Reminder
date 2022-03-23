@@ -18,6 +18,11 @@ jobs:
       - name: Build file
         run: pyinstaller --noconfirm --onefile --windowed --icon "assets/icon.ico" --name "Eyes_Protection_Reminder_v3.0.0" --add-data "./assets;assets/"  "src/main.py"
       
+      - uses: svenstaro/upx-action@v2
+        with:
+            file: Eyes_Protection_Reminder_v3.0.0.exe
+            args: --best
+      
       - uses: papeloto/action-zip@v1
         with:
             files: dist/
@@ -27,7 +32,7 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "v3.x.x"
-          prerelease: false
+          prerelease: true
           title: "Eyes_Protection_Reminder v3.0.0"
           files: |
             *.zip

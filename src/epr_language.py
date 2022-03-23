@@ -66,7 +66,7 @@ VI = {
     "EPR_17": "Tiếng Việt",
     "EPR_18": "Source code",
     "EPR_19": "Thoát",
-    "EPR_20": "Ey bạn, thời gian tới rồi đấy. Thư giãn đê 🐧🐧🐧"
+    "EPR_20": "Bạn ey, thời gian tới rồi đấy. Thư giãn đê 🐧🐧🐧"
 }
 
 def _getLanguage(id: str) -> str:
