@@ -18,10 +18,6 @@ jobs:
       - name: Build file
         run: pyinstaller --noconfirm --onefile --windowed --icon "assets/icon.ico" --name "Eyes_Protection_Reminder_v3.0.0" --add-data "./assets;assets/"  "src/main.py"
       
-      - uses: svenstaro/upx-action@v2
-        with:
-            file: dist/Eyes_Protection_Reminder_v3.0.0.exe
-      
       - uses: papeloto/action-zip@v1
         with:
             files: dist/
