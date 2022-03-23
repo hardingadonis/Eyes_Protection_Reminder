@@ -40,11 +40,6 @@ Have a nice coding :))
 > IMPORTANT: In some cases, you must turn off your `Windows Security` or your anti-virus software to download and run `Eyes Protection Reminder`.  
 > REMEMBER, DON' FORGET THAT.
 
-## New features
-- We've recently added the stray so we no longer have to open task manager to close this app
-- Extend old bugs, generate more bugs, pave the way for future bugs
-- Write a longer `README.md` so that people will think that we are professional developers
-
 ## Install
 
 - Clone repository
