@@ -39,7 +39,7 @@ FILE_CONFIG = os.path.join(DIR_PATH, str("config.json"))
 DATA = {}
 
 def _loadDefaultSettings():
-    with open(_relativeToAssets("default_setting.json", "r")) as in_file:
+    with open(_relativeToAssets("default_setting.json"), "r") as in_file:
         global DATA
         DATA = json.load(in_file)
 
