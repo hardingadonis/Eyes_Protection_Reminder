@@ -3,7 +3,9 @@ cmake_minimum_required(VERSION 3.10.2)
 project(Eyes_Protection_Reminder VERSION 4.0.0)
 
 set(EPR_SRC src/application.cpp
-			src/main_frame.cpp)
+			src/application.hpp
+			src/main_frame.cpp
+			src/main_frame.hpp)
 
 set(APP_ICON_RESOURCE_WINDOWS "${CMAKE_CURRENT_SOURCE_DIR}/assets/EPR_icon.rc")
 			

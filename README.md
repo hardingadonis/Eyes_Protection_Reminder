@@ -16,7 +16,7 @@ Let see...
 
 ## II. Requirements
 - Windows OS (just only Windows, not Linux)
-- Visual Studio (any version but)
+- Visual Studio (any version)
 - CMake 3.10.2 or above
 
 ## III. Install
@@ -37,11 +37,11 @@ cmake --build .
 
 - Run project
 ```
-Find an application that named EPR.exe.
+Find an application that named EPR.exe
 Now, run it!!!
 ```
 
-- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v3.x.x)
+- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.x.x)
 
 ## IV. License
 

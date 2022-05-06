@@ -1,4 +1,4 @@
-#include "main_frame.h"
+#include "main_frame.hpp"
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
 
