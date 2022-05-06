@@ -2,7 +2,7 @@
 
 With 20:20:20 rule, this tool will get rid of your eyes problems. Enjoys!!!
 
-## Introduction
+## I. Introduction
 
 You are a student?
 
@@ -12,35 +12,14 @@ Do you have to use a laptop, a desktop for a long time?
 
 Don't worry, that tool is for you!!!
 
-**Eyes Protection Reminder** uses Python for reminding the time to relax. That is simple for using.
-
-What is special about **Eyes Protection Reminder**?
-
-That is is impossible to turn off without shutdown or restart.
-
 Let see...
 
-![Eyes Protection Reminder](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/Eyes_Protection_Reminder.gif)
+## II. Requirements
+- Windows OS (just only Windows, not Linux)
+- Visual Studio (any version but)
+- CMake 3.10.2 or above
 
-## About Eyes Protection Reminder
-As a developer, I know the urging to complete our code and we are always tempted to code until the code can run perfectly but the more code we write, the more bug we make and we spend tons of hours coding and fixing the bug. Consequently, we look at our computer continuously for a long time, it's dangerously harmful to our eyes. As noob developers, we worry about the future that we will be completely single for the rest of our life due to our coding habits. Deeply aware of your concern, after several hours of seriously learning, researching, and coding, our team has invented this powerful app that will save your life.
-
-No more hours of coding constantly without taking a rest, this app will remind you to take a rest after a long time coding. In relevant to the 20:20:20 rule, every 20-minute, you need to have a break, look at something far away from you, the recommended distance is 20ft, but you don't need to look at something at an exact distance, you consider looking out a window or a door at an object that seems far away enough. After 20-minute relaxing, your eyes will feel more comfortable and you also have a chance to walk, drink some juices or rethink what you have done until now, I promise it'll help you code more productively and comfortably.
-
-Generally, this app will help you more in the section of preventing digital eye strain and other health problems related to sitting too much or looking at a digital screen too long (if you follow the app's instructions).
-
-Have a nice coding :))
-
-## Note
-> In our latest version, windows detect our application as malicious, but we assure you that our app is safe, so you need to click `More information` and click `Run anyway` the first time you run our app.  
-> And now, you can enjoy using this application.
-
-> Be cautious, so many people around the world have found that this app is so amazing and helpful, a lot of them have got addicted to `Eyes Protection Reminder`, please consider it thoroughly before it's too late, in case you can't resist using this app, we won't take responsibilities about that problem :))).
-
-> IMPORTANT: In some cases, you must turn off your `Windows Security` or your anti-virus software to download and run `Eyes Protection Reminder`.  
-> REMEMBER, DON' FORGET THAT.
-
-## Install
+## III. Install
 
 - Clone repository
 ```bash
@@ -48,27 +27,23 @@ git clone https://github.com/hardingadonis/Eyes_Protection_Reminder.git
 cd Eyes_Protection_Reminder/
 ```
 
-- If you don't have **virtualenv** installed in your computer please run this command
+- Build project form sources
 ```bash
-pip install virtualenv
-virtualenv .venv
+mkidr build
+cd build
+cmake .. -DwxBUILD_SHARED=OFF
+cmake --build .
 ```
 
-- Install dependency packages
-```bash
-"./.venv/Scripts/activate"
-pip install -r requirements.txt
+- Run project
 ```
-
-- Run script
-```bash
-"./.venv/Scripts/activate"
-python ./src/main.py
+Find an application that named EPR.exe.
+Now, run it!!!
 ```
 
 - Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v3.x.x)
 
-## License
+## IV. License
 
 MIT License
 
