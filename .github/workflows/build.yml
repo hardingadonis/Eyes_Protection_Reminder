@@ -2,9 +2,6 @@ name: Build project with CMake
 
 on: [push]
 
-env:
-  BUILD_TYPE: MinSizeRel
-
 jobs:
   build:
     runs-on: windows-latest
@@ -17,14 +14,14 @@ jobs:
       - name: Configure CMake
         shell: cmd
         working-directory: ${{github.workspace}}/build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DwxBUILD_SHARED=OFF -G"Visual Studio 17 2022" -Ax64
+        run: cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DwxBUILD_SHARED=OFF -G"Visual Studio 17 2022" -Ax64
       
       - name: Build
         working-directory: ${{github.workspace}}/build
         shell: cmd
-        run: cmake --build . --config $BUILD_TYPE
+        run: cmake --build . --config MinSizeRel
 
       - name: Test
         working-directory: ${{github.workspace}}/build
         shell: cmd
-        run: ctest -C $BUILD_TYPE
+        run: ctest -C MinSizeRel
