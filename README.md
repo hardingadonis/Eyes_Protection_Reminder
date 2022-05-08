@@ -1,4 +1,4 @@
-# Eyes Protection Reminder ![](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions/workflows/release.yml/badge.svg)
+# Eyes Protection Reminder ![](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions/workflows/build.yml/badge.svg) ![](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions/workflows/release.yml/badge.svg)
 
 With 20:20:20 rule, this tool will get rid of your eyes problems. Enjoys!!!
 
