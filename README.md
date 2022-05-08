@@ -34,7 +34,7 @@ git submodule update --init --recursive
 
 - Build project form sources
 ```bash
-mkidr build
+mkdir build
 cd build
 cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DwxBUILD_SHARED=OFF -G"Visual Studio 17 2022" -Ax64
 cmake --build . --config MinSizeRel
