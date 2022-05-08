@@ -30,7 +30,7 @@ jobs:
       #working-directory: ${{github.workspace}}/build/MinSizeRel
       uses: papeloto/action-zip@v1
       with:
-        files: EPR.exe
+        files: ${{github.workspace}}/build/MinSizeRel/EPR.exe
         dest: Eyes_Protection_Reminder_v4.0.0.zip
     
     - name: Public release files
