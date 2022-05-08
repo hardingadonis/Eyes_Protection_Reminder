@@ -27,7 +27,7 @@ jobs:
       run: cmake --build . --config MinSizeRel
     
     - name: Zip executable files
-      uses: papeloto/action-zip@v1
+      uses: vimtor/action-zip@1
       with:
         files: ${{github.workspace}}\build\MinSizeRel\EPR.exe
         dest: Eyes_Protection_Reminder_v4.0.0.zip
