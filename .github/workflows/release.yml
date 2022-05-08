@@ -2,7 +2,7 @@ name: Lastest Release
 
 on:
   push:
-    branches: [main]
+    branches: [switch_to_cpp]
 
 jobs:
   pre-release:
