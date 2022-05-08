@@ -4,13 +4,12 @@
 
 bool Application::OnInit()
 {
-	MainFrame* main_frame = new MainFrame("C++ GUI Application");
+	MainFrame* main_frame = new MainFrame("Eyes Protection Reminder - v4.0.0", wxSize(500, 300));
 
-	main_frame->SetClientSize(800, 600);
 	main_frame->Center();
 
 	main_frame->Show();
-
+	wxIcon;
 	return true;
 }
 
