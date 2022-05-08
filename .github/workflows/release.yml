@@ -2,7 +2,7 @@ name: Lastest Release
 
 on:
   push:
-    branches: [switch_to_cpp]
+    branches: [main]
 
 jobs:
   pre-release:
@@ -27,7 +27,6 @@ jobs:
       run: cmake --build . --config MinSizeRel
     
     - name: Zip executable files
-      #working-directory: ${{github.workspace}}/build/MinSizeRel
       uses: papeloto/action-zip@v1
       with:
         files: ${{github.workspace}}/build/MinSizeRel/EPR.exe
@@ -40,4 +39,4 @@ jobs:
         automatic_release_tag: "v4.x.x"
         prerelease: false
         title: "Eyes_Protection_Reminder_v4.0.0"
-        files: ${{github.workspace}}/build/MinSizeRel/Eyes_Protection_Reminder_v4.0.0.zip
+        files: Eyes_Protection_Reminder_v4.0.0.zip
