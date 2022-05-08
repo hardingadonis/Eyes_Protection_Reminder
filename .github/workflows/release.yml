@@ -27,7 +27,7 @@ jobs:
       run: cmake --build . --config MinSizeRel
     
     - name: Zip executable files
-      working-directory: ${{github.workspace}}/build/MinSizeRel
+      #working-directory: ${{github.workspace}}/build/MinSizeRel
       uses: papeloto/action-zip@v1
       with:
         files: EPR.exe
