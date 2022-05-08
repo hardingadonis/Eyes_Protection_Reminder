@@ -1,0 +1,34 @@
+name: Lastest Release
+
+on:
+  push:
+    branches: [switch_to_cpp]
+
+jobs:
+  pre-release:
+    name: "Pre Release"
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository and submodules
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+    
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{github.workspace}}/build
+    
+    - name: Configure CMake
+      shell: cmd
+      working-directory: ${{github.workspace}}/build
+      run: cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DwxBUILD_SHARED=OFF -G"Visual Studio 17 2022" -Ax64
+    
+    - name: Build
+      working-directory: ${{github.workspace}}/build
+      shell: cmd
+      run: cmake --build . --config MinSizeRel
+    
+    - name: Test
+      working-directory: ${{github.workspace}}/build
+      shell: cmd
+      run: ctest -C MinSizeRel

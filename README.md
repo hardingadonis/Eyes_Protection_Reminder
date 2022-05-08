@@ -1,4 +1,4 @@
-# Eyes Protection Reminder ![](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions/workflows/build.yml/badge.svg) ![](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions/workflows/release.yml/badge.svg)
+# Eyes Protection Reminder ![](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions/workflows/release.yml/badge.svg)
 
 With 20:20:20 rule, this tool will get rid of your eyes problems. Enjoys!!!
 
@@ -27,12 +27,17 @@ git clone https://github.com/hardingadonis/Eyes_Protection_Reminder.git
 cd Eyes_Protection_Reminder/
 ```
 
+- Clone submodule repository
+```bash
+git submodule update --init --recursive
+```
+
 - Build project form sources
 ```bash
 mkidr build
 cd build
-cmake .. -DwxBUILD_SHARED=OFF
-cmake --build .
+cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DwxBUILD_SHARED=OFF -G"Visual Studio 17 2022" -Ax64
+cmake --build . --config MinSizeRel
 ```
 
 - Run project
