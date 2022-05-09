@@ -1,33 +1,43 @@
-name: pre release
+name: Lastest Release
 
 on:
   push:
     branches: [main]
 
 jobs:
-  pre-release:
-    name: "Pre Release"
+  release:
+    name: "Lastest Release"
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-
-      - run: pip install -r requirements.txt
-
-      - name: Build file
-        run: pyinstaller --noconfirm --onefile --windowed --icon "assets/icon.ico" --name "Eyes_Protection_Reminder_v3.0.0" --add-data "./assets;assets/"  "src/main.py"
-      
-      - uses: papeloto/action-zip@v1
-        with:
-            files: dist/
-            dest: Eyes_Protection_Reminder_v3.0.0.zip
-
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "v3.x.x"
-          prerelease: true
-          title: "Eyes_Protection_Reminder v3.0.0"
-          files: |
-            *.zip
+    - name: Checkout repository and submodules
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+    
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{github.workspace}}\build
+    
+    - name: Configure CMake
+      working-directory: ${{github.workspace}}\build
+      run: cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DwxBUILD_SHARED=OFF -G"Visual Studio 17 2022" -Ax64
+    
+    - name: Build
+      working-directory: ${{github.workspace}}\build
+      run: cmake --build . --config MinSizeRel
+    
+    - name: Zip executable files
+      uses: TheDoctor0/zip-release@0.6.2
+      with:
+        type: "zip"
+        filename: "Eyes_Protection_Reminder_v4.0.0.zip"
+        path: ${{github.workspace}}\build\MinSizeRel\EPR.exe
+    
+    - name: Public release files
+      uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{secrets.GITHUB_TOKEN}}"
+        automatic_release_tag: "v4.x.x"
+        prerelease: false
+        title: "Eyes_Protection_Reminder_v4.0.0"
+        files: Eyes_Protection_Reminder_v4.0.0.zip

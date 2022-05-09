@@ -1,14 +1,1 @@
-# Folders
-.venv/
-__pycache__/
-node_modules/
-dist/
-!landingPage/dist/
 build/
-src/assets/
-
-node_modules/
-
-# File types
-*.spec
-*.pyc
