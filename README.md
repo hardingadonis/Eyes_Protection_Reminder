@@ -14,12 +14,18 @@ Don't worry, that tool is for you!!!
 
 Let see...
 
-## II. Requirements
+## II. Images
+
+![EPR_image_1](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/image_1.png)  
+![EPR_image_2](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/image_2.png)  
+![EPR_image_3](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/image_3.png)
+
+## III. Requirements
 - Windows OS (just only Windows, not Linux)
 - Visual Studio (any version)
 - CMake 3.10.2 or above
 
-## III. Install
+## IV. Install
 
 - Clone repository
 ```bash
@@ -48,7 +54,7 @@ Now, run it!!!
 
 - Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.x.x)
 
-## IV. License
+## V. License
 
 MIT License
 
