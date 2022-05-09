@@ -27,7 +27,7 @@ jobs:
       run: cmake --build . --config MinSizeRel
     
     - name: Zip executable files
-      use: TheDoctor0/zip-release@0.6.2
+      uses: TheDoctor0/zip-release@0.6.2
       with:
         type: "zip"
         filename: "Eyes_Protection_Reminder_v4.0.0.zip"
