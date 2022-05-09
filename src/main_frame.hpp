@@ -6,6 +6,7 @@ class MainFrame : public wxFrame
 {
 public:
 	MainFrame(const wxString& title, const wxSize& size);
+	virtual ~MainFrame() = default;
 
 	void CreateControls();
 

@@ -1,3 +1,4 @@
+﻿#include "about_dialog.hpp"
 #include "main_frame.hpp"
 #include "EPR_icon.xpm"
 #include <wx/wx.h>
@@ -29,23 +30,26 @@ void MainFrame::CreateControls()
 
 	//-----//
 
-	wxPanel* panel_left = new wxPanel(this, wxStandardID::wxID_ANY, wxDefaultPosition, wxSize(300, 300));
-	wxPanel* panel_right = new wxPanel(this, wxStandardID::wxID_ANY, wxDefaultPosition, wxSize(300, 300));
+	wxPanel* _panel_left = new wxPanel(this, wxStandardID::wxID_ANY, wxDefaultPosition, wxSize(300, 300));
+	wxPanel* _panel_right = new wxPanel(this, wxStandardID::wxID_ANY, wxDefaultPosition, wxSize(300, 300));
+
+	_panel_left->SetBackgroundColour(wxColor(255, 255, 255));
+	_panel_right->SetBackgroundColour(wxColor(255, 255, 255));
 
 	wxBoxSizer* sizer = new wxBoxSizer(wxOrientation::wxHORIZONTAL);
-	sizer->Add(panel_left, 1, wxStretch::wxEXPAND | wxDirection::wxALL, 2);
-	sizer->Add(panel_right, 1, wxStretch::wxEXPAND | wxDirection::wxALL, 2);
+	sizer->Add(_panel_left, 1, wxStretch::wxEXPAND | wxDirection::wxALL, 2);
+	sizer->Add(_panel_right, 1, wxStretch::wxEXPAND | wxDirection::wxALL, 2);
 
 	SetSizerAndFit(sizer);
 	
 	//-----//
-	m_countdownTimer = new wxStaticText(panel_left, wxStandardID::wxID_ANY, "20:00", wxDefaultPosition, wxDefaultSize, wxAlignment::wxALIGN_CENTRE_HORIZONTAL | wxAlignment::wxALIGN_CENTRE_VERTICAL);
+	m_countdownTimer = new wxStaticText(_panel_left, wxStandardID::wxID_ANY, "20:00", wxDefaultPosition, wxDefaultSize, wxAlignment::wxALIGN_CENTRE_HORIZONTAL | wxAlignment::wxALIGN_CENTRE_VERTICAL);
 	m_countdownTimer->SetPosition(wxPoint(50, 95));
 	m_countdownTimer->SetFont(wxFont(60, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false));
 
 	//-----//
 
-	m_IntroduceText = new wxStaticText(panel_right, wxStandardID::wxID_ANY, "How to use Eyes Protection Reminder:\n- Choose a value for timer.\n- Press \'Start\' button to start.\n- Press \'Stop\' to stop.", wxDefaultPosition, wxDefaultSize, wxAlignment::wxALIGN_CENTRE_VERTICAL);
+	m_IntroduceText = new wxStaticText(_panel_right, wxStandardID::wxID_ANY, "How to use Eyes Protection Reminder?\n- Choose a value for timer.\n- Press \'Start\' button to start.\n- Press \'Stop\' to stop.", wxDefaultPosition, wxDefaultSize, wxAlignment::wxALIGN_CENTRE_VERTICAL);
 	m_IntroduceText->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false));
 	m_IntroduceText->SetPosition(wxPoint(18, 30));
 
@@ -63,12 +67,12 @@ void MainFrame::CreateControls()
 	_choices.Add("55 minutes");
 	_choices.Add("60 minutes");
 
-	m_TimerValue = new wxChoice(panel_right, 10001, wxDefaultPosition, wxSize(100, 30), _choices);
+	m_TimerValue = new wxChoice(_panel_right, 10001, wxDefaultPosition, wxSize(100, 30), _choices);
 	m_TimerValue->Select(3);
 	m_TimerValue->SetPosition(wxPoint(100, 135));
 
-	m_buttonStart = new wxButton(panel_right, 10002, "Start", wxPoint(40, 210), wxSize(90, 30));
-	m_buttonStop = new wxButton(panel_right, 10003, "Stop", wxPoint(175, 210), wxSize(90, 30));
+	m_buttonStart = new wxButton(_panel_right, 10002, "Start", wxPoint(40, 210), wxSize(90, 30));
+	m_buttonStop = new wxButton(_panel_right, 10003, "Stop", wxPoint(175, 210), wxSize(90, 30));
 
 	//-----//
 
@@ -78,7 +82,12 @@ void MainFrame::CreateControls()
 
 void MainFrame::OnAboutMenu(wxCommandEvent& event)
 {
-	wxMessageBox("MainFrame::OnAboutMenu");
+	AboutDialog* _about_dialog = new AboutDialog(this, wxStandardID::wxID_ANY, "About!", wxDefaultPosition, wxSize(400, 250));
+
+	_about_dialog->ShowModal();
+	_about_dialog->Destroy();
+
+	event.Skip();
 }
 
 void MainFrame::OnTimerValueSelected(wxCommandEvent& event)

@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.10.2)
 
 project(Eyes_Protection_Reminder VERSION 4.0.0)
 
-set(EPR_SRC src/application.cpp
+set(EPR_SRC src/about_dialog.cpp
+			src/about_dialog.hpp
+			src/application.cpp
 			src/application.hpp
 			src/main_frame.cpp
 			src/main_frame.hpp)
