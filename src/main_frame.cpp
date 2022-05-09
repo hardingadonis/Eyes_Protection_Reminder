@@ -118,7 +118,7 @@ void MainFrame::OnButtonStartPressed(wxCommandEvent& event)
 	m_buttonStart->Enable(false);
 	m_buttonStop->Enable(true);
 
-	m_timerValueInt = (m_timerValue->GetCurrentSelection() + 1) * 5 * 1;
+	m_timerValueInt = (m_timerValue->GetCurrentSelection() + 1) * 5 * 60;
 	m_timer->Start(1000);
 
 	event.Skip();
@@ -144,7 +144,7 @@ void MainFrame::UpdateElapsedTime(wxTimerEvent& event)
 
 	if (m_timerValueInt <= 0)
 	{
-		m_timerValueInt = (m_timerValue->GetCurrentSelection() + 1) * 5 * 1;
+		m_timerValueInt = (m_timerValue->GetCurrentSelection() + 1) * 5 * 60;
 
 		m_notificationMessage->Show(20);
 	}
