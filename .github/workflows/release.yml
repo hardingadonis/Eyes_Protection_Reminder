@@ -26,8 +26,10 @@ jobs:
       working-directory: ${{github.workspace}}\build
       run: cmake --build . --config MinSizeRel
     
-    - name: Zip executable files
+    - name: Install zip action
       uses: montudor/action-zip@v1
+
+    - name: Zip executable files
       run: zip -qq -r Eyes_Protection_Reminder_v4.0.0.zip dist EPR.exe
       working-directory: ${{github.workspace}}\build\MinSizeRel
     
