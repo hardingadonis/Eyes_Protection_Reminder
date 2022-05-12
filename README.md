@@ -1,6 +1,13 @@
-# Eyes Protection Reminder ![](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions/workflows/build.yml/badge.svg) ![](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions/workflows/release.yml/badge.svg)
+# Eyes Protection Reminder
+> With 20:20:20 rule, this tool will get rid of your eyes problems. Enjoys!!!  
 
-With 20:20:20 rule, this tool will get rid of your eyes problems. Enjoys!!!
+[![Build Status](https://img.shields.io/github/workflow/status/hardingadonis/Eyes_Protection_Reminder/build?style=for-the-badge)](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions)
+[![Release Status](https://img.shields.io/github/workflow/status/hardingadonis/Eyes_Protection_Reminder/release/main?label=RELEASE&style=for-the-badge)](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions)
+![Languages](https://img.shields.io/github/languages/count/hardingadonis/Eyes_Protection_Reminder?style=for-the-badge)
+![Repo Size](https://img.shields.io/github/repo-size/hardingadonis/Eyes_Protection_Reminder?style=for-the-badge)
+![License](https://img.shields.io/github/license/hardingadonis/Eyes_Protection_Reminder?style=for-the-badge)
+![Sponsors](https://img.shields.io/github/sponsors/hardingadonis?style=for-the-badge)
+![Download](https://img.shields.io/github/downloads/hardingadonis/Eyes_Protection_Reminder/v1.0.0/total?style=for-the-badge)
 
 ## I. Introduction
 
