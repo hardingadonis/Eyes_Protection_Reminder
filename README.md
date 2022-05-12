@@ -7,7 +7,7 @@
 ![Repo Size](https://img.shields.io/github/repo-size/hardingadonis/Eyes_Protection_Reminder?style=for-the-badge)
 ![License](https://img.shields.io/github/license/hardingadonis/Eyes_Protection_Reminder?style=for-the-badge)
 ![Sponsors](https://img.shields.io/github/sponsors/hardingadonis?style=for-the-badge)
-![Download](https://img.shields.io/github/downloads/hardingadonis/Eyes_Protection_Reminder/v1.0.0/total?style=for-the-badge)
+![Download](https://img.shields.io/github/downloads/hardingadonis/Eyes_Protection_Reminder/v4.x.x/total?style=for-the-badge)
 
 ## I. Introduction
 
