@@ -30,14 +30,14 @@ jobs:
       uses: TheDoctor0/zip-release@0.6.2
       with:
         type: "zip"
-        filename: "Eyes_Protection_Reminder_v4.0.0.zip"
-        path: ${{github.workspace}}\build\MinSizeRel\EPR.exe
+        filename: "Eyes_Protection_Reminder_v4.1.0.zip"
+        path: ${{github.workspace}}\build\src\MinSizeRel\EPR.exe
     
     - name: Public release files
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{secrets.GITHUB_TOKEN}}"
-        automatic_release_tag: "v4.x.x"
+        automatic_release_tag: "v5.x.x"
         prerelease: false
-        title: "Eyes_Protection_Reminder_v4.0.0"
-        files: Eyes_Protection_Reminder_v4.0.0.zip
+        title: "Eyes_Protection_Reminder_v4.1.0"
+        files: Eyes_Protection_Reminderv_4.1.0.zip
