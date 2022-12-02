@@ -37,7 +37,7 @@ jobs:
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{secrets.GITHUB_TOKEN}}"
-        automatic_release_tag: "v5.x.x"
-        prerelease: false
+        automatic_release_tag: "v4.1.x"
+        prerelease: true
         title: "Eyes_Protection_Reminder_v4.1.0"
         files: Eyes_Protection_Reminderv_4.1.0.zip
