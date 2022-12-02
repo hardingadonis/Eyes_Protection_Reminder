@@ -14,5 +14,5 @@ namespace EPR
 
     private:
         wxSingleInstanceChecker*    m_instanceChecker;
-    }
+    };
 }

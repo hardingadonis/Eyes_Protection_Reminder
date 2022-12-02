@@ -20,7 +20,7 @@ jobs:
     
     - name: Configure CMake
       working-directory: ${{github.workspace}}\build
-      run: cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DwxBUILD_SHARED=OFF -G"Visual Studio 17 2022" -Ax64
+      run: cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DwxUSE_STL=ON -DwxBUILD_COMPATIBILITY=3.1 -DwxBUILD_SHARED=OFF -G"Visual Studio 17 2022" -Ax64
     
     - name: Build
       working-directory: ${{github.workspace}}\build
@@ -31,7 +31,7 @@ jobs:
       with:
         type: "zip"
         filename: "Eyes_Protection_Reminder_v4.1.0.zip"
-        path: ${{github.workspace}}\build\src\MinSizeRel\EPR.exe
+        path: ${{github.workspace}}\build\source\MinSizeRel\Eyes_Protection_Reminder_v4.1.0.exe
     
     - name: Public release files
       uses: "marvinpinto/action-automatic-releases@latest"
@@ -40,4 +40,4 @@ jobs:
         automatic_release_tag: "v4.1.x"
         prerelease: true
         title: "Eyes_Protection_Reminder_v4.1.0"
-        files: Eyes_Protection_Reminderv_4.1.0.zip
+        files: Eyes_Protection_Reminder_v4.1.0.zip

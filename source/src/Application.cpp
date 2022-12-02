@@ -21,7 +21,7 @@ namespace EPR
         return true;
     }
 
-    int OnExit()
+    int Application::OnExit()
     {
         if (m_instanceChecker != nullptr)
         {
