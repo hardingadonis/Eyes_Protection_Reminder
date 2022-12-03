@@ -24,65 +24,14 @@
 *                                                                                *
 *********************************************************************************/
 
-#include <wx/wx.h>
-#include <wx/taskbar.h>
-#include <Application.hpp>
+#include <UI/MainFrame.hpp>
+#include <UI/EPR_icon_32.xpm>
 
 namespace EPR
 {
-    bool Application::OnInit()
-    {
-        m_instanceChecker = new wxSingleInstanceChecker();
-
-        if (m_instanceChecker->IsAnotherRunning())
-        {
-            wxLogError(_("Another program instance is already running, aborting."));
-
-            delete m_instanceChecker;
-            m_instanceChecker = nullptr;
-
-            return false;
-        }
-
-        if (!wxTaskBarIcon::IsAvailable())
-        {
-            wxMessageBox(
-                "Sorry! This tool can not run on your device.",
-                "Eyes Protection Reminder",
-                wxOK | wxICON_ERROR
-            );
-
-            return false;
-        }
-
-        m_mainFrame = new MainFrame("Eyes Protection Remimder - v4.1.0", wxSize(640, 480));
-
-        if (m_mainFrame == nullptr)
-        {
-            return false;
-        }
-
-        m_mainFrame->Show();
-        
-        return true;
-    }
-
-    int Application::OnExit()
-    {
-        if (m_instanceChecker != nullptr)
-        {
-            delete m_instanceChecker;
-            m_instanceChecker = nullptr;
-        }
-
-        if (m_mainFrame != nullptr)
-        {
-            delete m_mainFrame;
-            m_mainFrame = nullptr;
-        }
-
-        return 0;
-    }
-
-    wxIMPLEMENT_APP(Application);
+	MainFrame::MainFrame(const wxString& title, const wxSize& size) :
+		wxFrame(nullptr, wxStandardID::wxID_ANY, title, wxDefaultPosition, size, wxMINIMIZE_BOX | wxCLOSE_BOX | wxCAPTION)
+	{
+		SetIcon(s_EPR_icon_32);
+	}
 }

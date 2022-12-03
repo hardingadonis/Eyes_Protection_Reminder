@@ -24,65 +24,21 @@
 *                                                                                *
 *********************************************************************************/
 
+#pragma once
+
 #include <wx/wx.h>
 #include <wx/taskbar.h>
-#include <Application.hpp>
 
 namespace EPR
 {
-    bool Application::OnInit()
-    {
-        m_instanceChecker = new wxSingleInstanceChecker();
+	class TaskBarIcon : public wxTaskBarIcon
+	{
+	public:
+		TaskBarIcon(wxTaskBarIconType _iconType = wxTBI_DEFAULT_TYPE);
 
-        if (m_instanceChecker->IsAnotherRunning())
-        {
-            wxLogError(_("Another program instance is already running, aborting."));
+	protected:
+		wxMenu* CreatePopupMenu() override;
 
-            delete m_instanceChecker;
-            m_instanceChecker = nullptr;
-
-            return false;
-        }
-
-        if (!wxTaskBarIcon::IsAvailable())
-        {
-            wxMessageBox(
-                "Sorry! This tool can not run on your device.",
-                "Eyes Protection Reminder",
-                wxOK | wxICON_ERROR
-            );
-
-            return false;
-        }
-
-        m_mainFrame = new MainFrame("Eyes Protection Remimder - v4.1.0", wxSize(640, 480));
-
-        if (m_mainFrame == nullptr)
-        {
-            return false;
-        }
-
-        m_mainFrame->Show();
-        
-        return true;
-    }
-
-    int Application::OnExit()
-    {
-        if (m_instanceChecker != nullptr)
-        {
-            delete m_instanceChecker;
-            m_instanceChecker = nullptr;
-        }
-
-        if (m_mainFrame != nullptr)
-        {
-            delete m_mainFrame;
-            m_mainFrame = nullptr;
-        }
-
-        return 0;
-    }
-
-    wxIMPLEMENT_APP(Application);
+	private:
+	};
 }
