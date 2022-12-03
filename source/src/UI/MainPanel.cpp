@@ -24,65 +24,62 @@
 *                                                                                *
 *********************************************************************************/
 
-#include <wx/wx.h>
-#include <wx/taskbar.h>
-#include <Application.hpp>
+#include <wx/statline.h>
+#include <UI/MainPanel.hpp>
 
 namespace EPR
 {
-    bool Application::OnInit()
-    {
-        m_instanceChecker = new wxSingleInstanceChecker();
+	// IDs for the controls
+	enum
+	{
+		EPR_Button_Start	= 11001,
+		EPR_Button_Stop		= 11002
+	};
 
-        if (m_instanceChecker->IsAnotherRunning())
-        {
-            wxLogError(_("Another program instance is already running, aborting."));
+	wxBEGIN_EVENT_TABLE(MainPanel, wxPanel)
+	wxEND_EVENT_TABLE()
 
-            delete m_instanceChecker;
-            m_instanceChecker = nullptr;
+	MainPanel::MainPanel(wxWindow* _parent) :
+		wxPanel(_parent, wxID_ANY),
+		m_timerValue(nullptr),
+		m_startButton(nullptr),
+		m_stopButton(nullptr)
+	{
+		CreateControls();
+	}
 
-            return false;
-        }
+	void MainPanel::CreateControls()
+	{
+		// Create label to show the value of timer
+		m_timerValue = new wxStaticText(this, wxID_ANY, "20:00");
+		m_timerValue->SetFont(wxFont(90, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false));
+		m_timerValue->SetToolTip("To show the timer...");
 
-        if (!wxTaskBarIcon::IsAvailable())
-        {
-            wxMessageBox(
-                "Sorry! This tool can not run on your device.",
-                "Eyes Protection Reminder",
-                wxOK | wxICON_ERROR
-            );
+		// Create start button
+		m_startButton = new wxButton(this, EPR_Button_Start, "&Start");
+		m_startButton->SetToolTip("To start the timer...");
 
-            return false;
-        }
+		// Create stop button
+		m_stopButton = new wxButton(this, EPR_Button_Stop, "&Stop");
+		m_stopButton->SetToolTip("To stop the timer...");
 
-        m_mainFrame = new MainFrame("Eyes Protection Remimder - v4.1.0", wxSize(500, 300));
+		// Create static line
+		wxStaticLine* _staticLine = new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxSize(450, 1), wxLI_HORIZONTAL);
 
-        if (m_mainFrame == nullptr)
-        {
-            return false;
-        }
+		// Create flags
+		wxSizerFlags _flags = wxSizerFlags().Border().Center();
 
-        m_mainFrame->Show();
-        
-        return true;
-    }
+		// Create bottom sizer
+		wxSizer* _bottomSizer = new wxBoxSizer(wxHORIZONTAL);
+		_bottomSizer->Add(m_startButton, _flags);
+		_bottomSizer->Add(m_stopButton, _flags);
 
-    int Application::OnExit()
-    {
-        if (m_instanceChecker != nullptr)
-        {
-            delete m_instanceChecker;
-            m_instanceChecker = nullptr;
-        }
+		// Create main sizer
+		wxSizer* _mainSizer = new wxBoxSizer(wxVERTICAL);
+		_mainSizer->Add(m_timerValue, _flags);
+		_mainSizer->Add(_staticLine, _flags);
+		_mainSizer->Add(_bottomSizer, _flags);
 
-        if (m_mainFrame != nullptr)
-        {
-            delete m_mainFrame;
-            m_mainFrame = nullptr;
-        }
-
-        return 0;
-    }
-
-    wxIMPLEMENT_APP(Application);
+		SetSizer(_mainSizer);
+	}
 }

@@ -27,12 +27,26 @@
 #pragma once
 
 #include <wx/wx.h>
+#include <UI/MainPanel.hpp>
 
 namespace EPR
 {
 	class MainFrame : public wxFrame
 	{
 	public:
-		MainFrame(const wxString& title, const wxSize& size);
+		MainFrame(const wxString& _title, const wxSize& _size);
+
+		void OnQuit(wxCommandEvent& _event);
+		void OnSettings(wxCommandEvent& _event);
+		void OnAbout(wxCommandEvent& _event);
+
+	private:
+		void CreateControls();
+
+	private:
+		MainPanel*		m_mainPanel;
+
+	public:
+		wxDECLARE_EVENT_TABLE();
 	};
 }

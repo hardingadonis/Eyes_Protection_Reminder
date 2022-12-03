@@ -6,7 +6,7 @@
 ![Languages](https://img.shields.io/github/languages/top/hardingadonis/Eyes_Protection_Reminder?style=flat)
 ![Repo Size](https://img.shields.io/github/repo-size/hardingadonis/Eyes_Protection_Reminder?style=flat)
 ![License](https://img.shields.io/github/license/hardingadonis/Eyes_Protection_Reminder?style=flat)
-[![Download](https://img.shields.io/github/downloads/hardingadonis/Eyes_Protection_Reminder/v4.x.x/total?style=flat)](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.x.x)
+[![Download](https://img.shields.io/github/downloads/hardingadonis/Eyes_Protection_Reminder/v4.1.x/total?style=flat)](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.x.x)
 
 ## I. Introduction
 
