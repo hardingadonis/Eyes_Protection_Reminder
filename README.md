@@ -2,11 +2,11 @@
 > With 20:20:20 rule, this tool will get rid of your eyes problems. Enjoys!!!  
 
 [![Build Status](https://img.shields.io/github/workflow/status/hardingadonis/Eyes_Protection_Reminder/Build%20Project?style=flat)](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions)
-[![Release Status](https://img.shields.io/github/workflow/status/hardingadonis/Eyes_Protection_Reminder/Lastest%20Release?label=RELEASE&style=flat)](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions)
+[![Release Status](https://img.shields.io/github/workflow/status/hardingadonis/Eyes_Protection_Reminder/Lastest%20Release?label=release&style=flat)](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions)
 ![Languages](https://img.shields.io/github/languages/top/hardingadonis/Eyes_Protection_Reminder?style=flat)
 ![Repo Size](https://img.shields.io/github/repo-size/hardingadonis/Eyes_Protection_Reminder?style=flat)
 ![License](https://img.shields.io/github/license/hardingadonis/Eyes_Protection_Reminder?style=flat)
-[![Download](https://img.shields.io/github/downloads/hardingadonis/Eyes_Protection_Reminder/v4.x.x/total?style=flat)](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.x.x)
+[![Download](https://img.shields.io/github/downloads/hardingadonis/Eyes_Protection_Reminder/v4.1.x/total?style=flat)](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.x)
 
 ## I. Introduction
 
@@ -48,17 +48,17 @@ git submodule update --init --recursive
 ```bash
 mkdir build
 cd build
-cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DwxBUILD_SHARED=OFF -G"Visual Studio 17 2022" -Ax64
+cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DwxUSE_STL=ON -DwxBUILD_COMPATIBILITY="3.1" -DwxBUILD_SHARED=OFF -G"Visual Studio 17 2022" -Ax64
 cmake --build . --config MinSizeRel
 ```
 
 - Run project
 ```
-Find an application that named EPR.exe
+Find an application that named Eyes_Protection_Reminder_v4.1.0.exe
 Now, run it!!!
 ```
 
-- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.x.x)
+- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.x)
 
 ## V. License
 

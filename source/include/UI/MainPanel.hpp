@@ -27,15 +27,25 @@
 #pragma once
 
 #include <wx/wx.h>
-#include <wx/snglinst.h>
 
-class Application : public wxApp
+namespace EPR
 {
-public:
-	bool OnInit() override;
+	class MainPanel : public wxPanel
+	{
+	public:
+		MainPanel(wxWindow* _parent);
 
-	int OnExit() override;
+	private:
+		void CreateControls();
 
-private:
-	wxSingleInstanceChecker*	m_checker;
-};
+	private:
+		wxStaticText*	m_timerValue;
+		wxStaticText*	m_restedValue;
+
+		wxButton*		m_startButton;
+		wxButton*		m_stopButton;
+
+	public:
+		wxDECLARE_EVENT_TABLE();
+	};
+}

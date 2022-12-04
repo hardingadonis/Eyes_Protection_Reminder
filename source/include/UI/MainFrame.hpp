@@ -27,46 +27,27 @@
 #pragma once
 
 #include <wx/wx.h>
-#include <wx/notifmsg.h>
+#include <UI/MainPanel.hpp>
 
-class MainFrame : public wxFrame
+namespace EPR
 {
-public:
-	MainFrame(const wxString& title, const wxSize& size);
-	virtual ~MainFrame() = default;
+	class MainFrame : public wxFrame
+	{
+	public:
+		MainFrame(const wxString& _title, const wxSize& _size);
 
-	void CreateControls();
+		void OnHide(wxCommandEvent& _event);
+		void OnQuit(wxCommandEvent& _event);
+		void OnSettings(wxCommandEvent& _event);
+		void OnAbout(wxCommandEvent& _event);
 
-	void OnAboutMenu(wxCommandEvent& event);
+	private:
+		void CreateControls();
 
-	void OnTimerValueSelected(wxCommandEvent& event);
+	private:
+		MainPanel*		m_mainPanel;
 
-	void OnButtonStartPressed(wxCommandEvent& event);
-	void OnButtonStopPressed(wxCommandEvent& event);
-
-	void UpdateElapsedTime(wxTimerEvent& event);
-
-private:
-	wxString GetTimerValue(int value);
-	int GetTimerValueWithInt(int value);
-
-private:
-	wxStaticText*			m_countdownTimer;
-
-	wxStaticText*			m_introduceText;
-	wxChoice*				m_timerValue;
-
-	wxButton*				m_buttonStart;
-	wxButton*				m_buttonStop;
-
-	wxMenuBar*				m_menuBar;
-	wxMenu*					m_helpMenu;
-
-	wxTimer*				m_timer;
-	int						m_timerValueInt;
-
-	wxNotificationMessage*	m_notificationMessage;
-
-public:
-	wxDECLARE_EVENT_TABLE();
-};
+	public:
+		wxDECLARE_EVENT_TABLE();
+	};
+}

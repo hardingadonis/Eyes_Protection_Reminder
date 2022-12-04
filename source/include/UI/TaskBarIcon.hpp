@@ -27,18 +27,18 @@
 #pragma once
 
 #include <wx/wx.h>
+#include <wx/taskbar.h>
 
-class AboutDialog : public wxDialog
+namespace EPR
 {
-public:
-    AboutDialog(wxWindow* parent, wxWindowID id, const wxString& title,const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize);
-    virtual ~AboutDialog() = default;
+	class TaskBarIcon : public wxTaskBarIcon
+	{
+	public:
+		TaskBarIcon(wxTaskBarIconType _iconType = wxTBI_DEFAULT_TYPE);
 
-    void OnButtonOKPressed(wxCommandEvent& event);
+	protected:
+		wxMenu* CreatePopupMenu() override;
 
-private:
-    wxButton*       m_buttonOK;
-
-public:
-    wxDECLARE_EVENT_TABLE();
-};
+	private:
+	};
+}

@@ -24,39 +24,87 @@
 *                                                                                *
 *********************************************************************************/
 
-#include "application.hpp"
-#include "main_frame.hpp"
-#include <wx/wx.h>
+#include <UI/MainFrame.hpp>
+#include <UI/EPR_icon_512.xpm>
 
-bool Application::OnInit()
+namespace EPR
 {
-	m_checker = new wxSingleInstanceChecker;
-
-	if (m_checker->IsAnotherRunning())
+	// IDs for the menu commands
+	enum
 	{
-		wxLogError(_("Another program instance is already running, aborting."));
+		EPR_Menu_Hide		= 10001,
+		EPR_Menu_Quit		= wxID_EXIT,
+		EPR_Menu_Settings	= 10002,
+		EPR_Menu_About		= wxID_ABOUT
+	};
 
-		delete m_checker;
-		m_checker = nullptr;
+	wxBEGIN_EVENT_TABLE(MainFrame, wxFrame)
+		EVT_MENU(EPR_Menu_Hide, MainFrame::OnHide)
+		EVT_MENU(EPR_Menu_Quit, MainFrame::OnQuit)
+		EVT_MENU(EPR_Menu_Settings, MainFrame::OnSettings)
+		EVT_MENU(EPR_Menu_About, MainFrame::OnAbout)
+	wxEND_EVENT_TABLE()
 
-		return false;
+	MainFrame::MainFrame(const wxString& _title, const wxSize& _size) :
+		wxFrame(nullptr, wxStandardID::wxID_ANY, _title, wxDefaultPosition, _size, wxMINIMIZE_BOX | wxCLOSE_BOX | wxCAPTION),
+		m_mainPanel(nullptr)
+	{
+		SetIcon(s_EPR_icon_512);
+
+		CreateControls();
 	}
 
+	void MainFrame::OnHide(wxCommandEvent& _event)
+	{
+		_event.Skip();
+	}
 
-	MainFrame* main_frame = new MainFrame("Eyes Protection Reminder - v4.0.0", wxSize(600, 300));
+	void MainFrame::OnQuit(wxCommandEvent& _event)
+	{
+		Close(true);
 
-	main_frame->Center();
-	main_frame->Show();
+		_event.Skip();
+	}
 
-	return true;
+	void MainFrame::OnSettings(wxCommandEvent& _event)
+	{
+		_event.Skip();
+	}
+
+	void MainFrame::OnAbout(wxCommandEvent& _event)
+	{
+		_event.Skip();
+	}
+
+	void MainFrame::CreateControls()
+	{
+		// Menu bar - File
+		wxMenu* _fileMenu = new wxMenu();
+		_fileMenu->Append(EPR_Menu_Hide, "&Hide\tF2", "Hide this tool...");
+		_fileMenu->Append(EPR_Menu_Quit, "&Exit\tAlt-F4", "Quit this tool...");
+
+		// Menu bar - Edit
+		wxMenu* _editMenu = new wxMenu();
+		_editMenu->Append(EPR_Menu_Settings, "&Settings\tF3", "Show settings dialog...");
+
+		// Menu bar - Help
+		wxMenu* _helpMenu = new wxMenu();
+		_helpMenu->Append(EPR_Menu_About, "&About\tF1", "Show about dialog...");
+
+		// Menu bar - all
+		wxMenuBar* _menuBar = new wxMenuBar();
+		_menuBar->Append(_fileMenu, "&File");
+		_menuBar->Append(_editMenu, "&Edit");
+		_menuBar->Append(_helpMenu, "&Help");
+
+		// Set menu bar for MainFrame
+		SetMenuBar(_menuBar);
+
+		// Create main panel
+		m_mainPanel = new MainPanel(this);
+
+		// Create status bar
+		CreateStatusBar(1);
+		SetStatusText("Welcome to Eyes Protection Reminder!");
+	}
 }
-
-int Application::OnExit()
-{
-	delete m_checker;
-	m_checker = nullptr;
-
-	return 0;
-}
-
-wxIMPLEMENT_APP(Application);
