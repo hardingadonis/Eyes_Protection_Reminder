@@ -5,11 +5,11 @@ on: push
 jobs:
   build:
     name: Build Project
-    runs-on: windows-2022
+    runs-on: windows-latest
 
     steps:
     - name: Checkout repository and submodules
-      uses: actions/checkout@v2.5.0
+      uses: actions/checkout@v3
       with:
         submodules: recursive
     
@@ -17,6 +17,7 @@ jobs:
       uses: TheMrMilchmann/setup-msvc-dev@v2.0.0
       with:
         arch: x64
+        version: 1.11.1
 
     - name: Install Ninja build tool
       uses: seanmiddleditch/gha-setup-ninja@v3
@@ -29,4 +30,4 @@ jobs:
     
     - name: Build
       working-directory: ${{github.workspace}}/build
-      run: cmake --build . --config Debug
+      run: cmake --build . --config Debug --target EPR
