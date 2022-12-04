@@ -64,7 +64,7 @@ Now, run it!!!
 
 MIT License
 
-Copyright (c) 2022 [Harding Adonis](https://github.com/hardingadonis), [hoanghy0112](https://github.com/hoanghy0112), [AlexPhoenix45](https://github.com/AlexPhoenix45)
+Copyright (c) 2022 [Minh Vương](https://github.com/hardingadonis), [Nguyen Hoang Hy](https://github.com/hoanghy0112), [AlexPhoenix45](https://github.com/AlexPhoenix45)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
