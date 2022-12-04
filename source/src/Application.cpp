@@ -55,7 +55,7 @@ namespace EPR
             return false;
         }
 
-        m_mainFrame = new MainFrame("Eyes Protection Remimder - v4.1.0", wxSize(500, 300));
+        m_mainFrame = new MainFrame("Eyes Protection Remimder - v4.1.0", wxSize(500, 350));
 
         if (m_mainFrame == nullptr)
         {
@@ -73,12 +73,6 @@ namespace EPR
         {
             delete m_instanceChecker;
             m_instanceChecker = nullptr;
-        }
-
-        if (m_mainFrame != nullptr)
-        {
-            delete m_mainFrame;
-            m_mainFrame = nullptr;
         }
 
         return 0;

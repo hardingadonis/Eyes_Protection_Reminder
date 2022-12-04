@@ -2,7 +2,7 @@ name: Lastest Release
 
 on:
   push:
-    branches: [v4.1.0]
+    branches: [main]
 
 jobs:
   release:
@@ -46,6 +46,6 @@ jobs:
       with:
         repo_token: "${{secrets.GITHUB_TOKEN}}"
         automatic_release_tag: "v4.1.x"
-        prerelease: true
+        prerelease: false
         title: "Eyes_Protection_Reminder_v4.1.0"
         files: Eyes_Protection_Reminder_v4.1.0.zip

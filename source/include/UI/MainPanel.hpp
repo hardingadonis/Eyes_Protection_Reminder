@@ -40,6 +40,7 @@ namespace EPR
 
 	private:
 		wxStaticText*	m_timerValue;
+		wxStaticText*	m_restedValue;
 
 		wxButton*		m_startButton;
 		wxButton*		m_stopButton;

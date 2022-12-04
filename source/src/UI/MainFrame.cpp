@@ -32,12 +32,14 @@ namespace EPR
 	// IDs for the menu commands
 	enum
 	{
+		EPR_Menu_Hide		= 10001,
 		EPR_Menu_Quit		= wxID_EXIT,
-		EPR_Menu_Settings	= 10001,
+		EPR_Menu_Settings	= 10002,
 		EPR_Menu_About		= wxID_ABOUT
 	};
 
 	wxBEGIN_EVENT_TABLE(MainFrame, wxFrame)
+		EVT_MENU(EPR_Menu_Hide, MainFrame::OnHide)
 		EVT_MENU(EPR_Menu_Quit, MainFrame::OnQuit)
 		EVT_MENU(EPR_Menu_Settings, MainFrame::OnSettings)
 		EVT_MENU(EPR_Menu_About, MainFrame::OnAbout)
@@ -50,6 +52,11 @@ namespace EPR
 		SetIcon(s_EPR_icon_512);
 
 		CreateControls();
+	}
+
+	void MainFrame::OnHide(wxCommandEvent& _event)
+	{
+		_event.Skip();
 	}
 
 	void MainFrame::OnQuit(wxCommandEvent& _event)
@@ -73,11 +80,12 @@ namespace EPR
 	{
 		// Menu bar - File
 		wxMenu* _fileMenu = new wxMenu();
+		_fileMenu->Append(EPR_Menu_Hide, "&Hide\tF2", "Hide this tool...");
 		_fileMenu->Append(EPR_Menu_Quit, "&Exit\tAlt-F4", "Quit this tool...");
 
 		// Menu bar - Edit
 		wxMenu* _editMenu = new wxMenu();
-		_editMenu->Append(EPR_Menu_Settings, "&Settings\tAlt-S", "Show settings dialog...");
+		_editMenu->Append(EPR_Menu_Settings, "&Settings\tF3", "Show settings dialog...");
 
 		// Menu bar - Help
 		wxMenu* _helpMenu = new wxMenu();
@@ -96,7 +104,7 @@ namespace EPR
 		m_mainPanel = new MainPanel(this);
 
 		// Create status bar
-		CreateStatusBar(2);
+		CreateStatusBar(1);
 		SetStatusText("Welcome to Eyes Protection Reminder!");
 	}
 }

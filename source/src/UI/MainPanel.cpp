@@ -55,6 +55,11 @@ namespace EPR
 		m_timerValue->SetFont(wxFont(90, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false));
 		m_timerValue->SetToolTip("To show the timer...");
 
+		// Create label to show the value of rested
+		m_restedValue = new wxStaticText(this, wxID_ANY, "00:20");
+		m_restedValue->SetFont(wxFont(20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false));
+		m_restedValue->SetToolTip("To show the rested time...");
+
 		// Create start button
 		m_startButton = new wxButton(this, EPR_Button_Start, "&Start");
 		m_startButton->SetToolTip("To start the timer...");
@@ -64,22 +69,24 @@ namespace EPR
 		m_stopButton->SetToolTip("To stop the timer...");
 
 		// Create static line
-		wxStaticLine* _staticLine = new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxSize(450, 1), wxLI_HORIZONTAL);
+		wxStaticLine* _staticLine = new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxSize(455, 1), wxLI_HORIZONTAL);
 
 		// Create flags
 		wxSizerFlags _flags = wxSizerFlags().Border().Center();
 
 		// Create bottom sizer
 		wxSizer* _bottomSizer = new wxBoxSizer(wxHORIZONTAL);
-		_bottomSizer->Add(m_startButton, _flags);
-		_bottomSizer->Add(m_stopButton, _flags);
+		_bottomSizer->Add(m_startButton, 1, wxEXPAND | wxALL, 15);
+		_bottomSizer->Add(m_stopButton, 1, wxEXPAND | wxALL, 15);
 
 		// Create main sizer
 		wxSizer* _mainSizer = new wxBoxSizer(wxVERTICAL);
 		_mainSizer->Add(m_timerValue, _flags);
+		_mainSizer->Add(m_restedValue, _flags);
 		_mainSizer->Add(_staticLine, _flags);
-		_mainSizer->Add(_bottomSizer, _flags);
+		_mainSizer->Add(_bottomSizer, 1, wxEXPAND | wxALL);
 
 		SetSizer(_mainSizer);
+		Layout();
 	}
 }
