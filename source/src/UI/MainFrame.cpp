@@ -2,7 +2,7 @@
 *                                                                                *
 * MIT License                                                                    *
 *                                                                                *
-* Copyright (c) 2022 Minh Vương, Nguyen Hoang Hy, AlexPhoenix45                  *
+* Copyright (c) 2022 Minh Vương                                                  *
 *                                                                                *
 * Permission is hereby granted, free of charge, to any person obtaining a copy   *
 * of this software and associated documentation files (the "Software"), to deal  *
@@ -24,13 +24,17 @@
 *                                                                                *
 *********************************************************************************/
 
+#include <wx/aboutdlg.h>
+#include <wx/generic/aboutdlgg.h>
+
 #include <UI/MainFrame.hpp>
+#include <UI/EPR_icon_64.xpm>
 #include <UI/EPR_icon_512.xpm>
 
 namespace EPR
 {
 	// IDs for the menu commands
-	enum
+	enum EPR_Menu
 	{
 		EPR_Menu_Hide		= 10001,
 		EPR_Menu_Quit		= wxID_EXIT,
@@ -73,6 +77,50 @@ namespace EPR
 
 	void MainFrame::OnAbout(wxCommandEvent& _event)
 	{
+		wxAboutDialogInfo _aboutInfo;
+
+		// Set the information for about dialog
+		_aboutInfo.SetName(wxTheApp->GetAppName());
+		_aboutInfo.SetVersion("- v4.1.0");
+		_aboutInfo.SetIcon(s_EPR_icon_64);
+		_aboutInfo.SetCopyright("Copyright (c) 2022 " + wxString::FromUTF8("Minh Vương.") + "\nAll rights reserved.");
+		_aboutInfo.SetDescription("A small tool to remind you to\nprotect your eyes with the 20:20:20 rule.");
+
+		_aboutInfo.SetWebSite("https://github.com/hardingadonis/Eyes_Protection_Reminder", "Source Code");
+
+		_aboutInfo.SetLicense(
+			"MIT License\n"
+			"\n" +
+			wxString::FromUTF8("Copyright (c) 2022 Minh Vương\n") +
+			"\n"
+			"Permission is hereby granted, free of charge, to any person obtaining a copy\n"
+			"of this software and associated documentation files (the \"Software\"), to deal\n"
+			"in the Software without restriction, including without limitation the rights\n"
+			"to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n"
+			"copies of the Software, and to permit persons to whom the Software is\n"
+			"furnished to do so, subject to the following conditions:\n"
+			"\n"
+			"The above copyright notice and this permission notice shall be included in all\n"
+			"copies or substantial portions of the Software.\n"
+			"\n"
+			"THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n"
+			"IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,y\n"
+			"FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n"
+			"AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n"
+			"LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n"
+			"OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n"
+			"SOFTWARE.\n"
+		);
+
+		_aboutInfo.AddDeveloper(wxString::FromUTF8("Minh Vương"));
+		_aboutInfo.AddDeveloper("Contributors");
+
+		_aboutInfo.AddDocWriter(wxString::FromUTF8("Minh Vương"));
+		_aboutInfo.AddDocWriter("Contributors");
+
+		// Generate the about dialog
+		wxGenericAboutBox(_aboutInfo, this);
+
 		_event.Skip();
 	}
 
@@ -104,7 +152,7 @@ namespace EPR
 		m_mainPanel = new MainPanel(this);
 
 		// Create status bar
-		CreateStatusBar(1);
+		CreateStatusBar(2);
 		SetStatusText("Welcome to Eyes Protection Reminder!");
 	}
 }

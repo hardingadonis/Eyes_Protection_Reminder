@@ -2,7 +2,7 @@
 *                                                                                *
 * MIT License                                                                    *
 *                                                                                *
-* Copyright (c) 2022 Minh Vương, Nguyen Hoang Hy, AlexPhoenix45                  *
+* Copyright (c) 2022 Minh Vương                                                  *
 *                                                                                *
 * Permission is hereby granted, free of charge, to any person obtaining a copy   *
 * of this software and associated documentation files (the "Software"), to deal  *
@@ -35,6 +35,9 @@ namespace EPR
 	public:
 		MainPanel(wxWindow* _parent);
 
+		void OnStartButtonPressed(wxCommandEvent& _event);
+		void OnStopButtonPressed(wxCommandEvent& _event);
+
 	private:
 		void CreateControls();
 
@@ -44,6 +47,8 @@ namespace EPR
 
 		wxButton*		m_startButton;
 		wxButton*		m_stopButton;
+
+		wxFrameBase*	m_parent;
 
 	public:
 		wxDECLARE_EVENT_TABLE();

@@ -2,7 +2,7 @@
 *                                                                                *
 * MIT License                                                                    *
 *                                                                                *
-* Copyright (c) 2022 Minh Vương, Nguyen Hoang Hy, AlexPhoenix45                  *
+* Copyright (c) 2022 Minh Vương                                                  *
 *                                                                                *
 * Permission is hereby granted, free of charge, to any person obtaining a copy   *
 * of this software and associated documentation files (the "Software"), to deal  *
@@ -25,27 +25,45 @@
 *********************************************************************************/
 
 #include <wx/statline.h>
+
 #include <UI/MainPanel.hpp>
 
 namespace EPR
 {
 	// IDs for the controls
-	enum
+	enum EPR_Button
 	{
 		EPR_Button_Start	= 11001,
 		EPR_Button_Stop		= 11002
 	};
 
 	wxBEGIN_EVENT_TABLE(MainPanel, wxPanel)
+		EVT_BUTTON(EPR_Button_Start, MainPanel::OnStartButtonPressed)
+		EVT_BUTTON(EPR_Button_Stop, MainPanel::OnStopButtonPressed)
 	wxEND_EVENT_TABLE()
 
 	MainPanel::MainPanel(wxWindow* _parent) :
 		wxPanel(_parent, wxID_ANY),
 		m_timerValue(nullptr),
 		m_startButton(nullptr),
-		m_stopButton(nullptr)
+		m_stopButton(nullptr),
+		m_parent((wxFrameBase*)_parent)
 	{
 		CreateControls();
+	}
+
+	void MainPanel::OnStartButtonPressed(wxCommandEvent& _event)
+	{
+		m_parent->SetStatusText("Eyes Protection Reminder is still running...", 1);
+
+		_event.Skip();
+	}
+
+	void MainPanel::OnStopButtonPressed(wxCommandEvent& _event)
+	{
+		m_parent->SetStatusText("Eyes Protection Reminder was stopped!", 1);
+
+		_event.Skip();
 	}
 
 	void MainPanel::CreateControls()
