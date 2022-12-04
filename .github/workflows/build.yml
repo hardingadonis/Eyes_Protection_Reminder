@@ -13,8 +13,10 @@ jobs:
       with:
         submodules: recursive
         
-    - name: Configure CMake
+    - name: Install Ninja build tool
       uses: seanmiddleditch/gha-setup-ninja@v3
+    
+    - name: Configure CMake
       run: |
         mkdir build
         cd build
