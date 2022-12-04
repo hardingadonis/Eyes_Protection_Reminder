@@ -2,7 +2,7 @@ name: Lastest Release
 
 on:
   push:
-    branches: [main]
+    branches: [v4.1.0]
 
 jobs:
   release:
