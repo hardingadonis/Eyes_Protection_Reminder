@@ -5,11 +5,11 @@ on: push
 jobs:
   build:
     name: Build Project
-    runs-on: windows-latest
+    runs-on: windows-2022
 
     steps:
     - name: Checkout repository and submodules
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.5.0
       with:
         submodules: recursive
     
@@ -17,8 +17,10 @@ jobs:
       run: cmake -E make_directory ${{github.workspace}}/build
     
     - name: Configure CMake
+      uses: seanmiddleditch/gha-setup-ninja@v3
       working-directory: ${{github.workspace}}/build
-      run: cmake .. -DCMAKE_BUILD_TYPE=Debug -DwxUSE_STL=ON -DwxBUILD_COMPATIBILITY="3.1" -DwxBUILD_SHARED=OFF -G"Visual Studio 17 2022" -Ax64
+      run: "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+      run: cmake .. -DCMAKE_BUILD_TYPE=Debug -DwxUSE_STL=ON -DwxBUILD_COMPATIBILITY="3.1" -DwxBUILD_SHARED=OFF -G"Ninja" -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl
     
     - name: Build
       working-directory: ${{github.workspace}}/build
