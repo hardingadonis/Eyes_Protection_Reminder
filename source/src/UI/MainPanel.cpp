@@ -28,8 +28,15 @@
 
 #include <UI/MainPanel.hpp>
 
+static int timer = 20;
+static int rest = 5;
+
 namespace EPR
 {
+	// Variables is used to storage the value of time remaining
+	static int s_timer_time_remaining = 0;
+	static int s_timer_rested_remaining = 0;
+
 	// IDs for the controls
 	enum EPR_Button
 	{
@@ -45,6 +52,9 @@ namespace EPR
 	MainPanel::MainPanel(wxWindow* _parent) :
 		wxPanel(_parent, wxID_ANY),
 		m_timerValue(nullptr),
+		m_restedValue(nullptr),
+		m_timer(nullptr),
+		m_rested(nullptr),
 		m_startButton(nullptr),
 		m_stopButton(nullptr),
 		m_parent((wxFrameBase*)_parent)
@@ -56,6 +66,14 @@ namespace EPR
 	{
 		m_parent->SetStatusText("Eyes Protection Reminder is still running...", 1);
 
+		m_startButton->Disable();
+		m_stopButton->Enable();
+
+		m_rested->Stop();
+		m_timer->Start(1000);
+
+		s_timer_time_remaining = timer;
+
 		_event.Skip();
 	}
 
@@ -63,20 +81,74 @@ namespace EPR
 	{
 		m_parent->SetStatusText("Eyes Protection Reminder was stopped!", 1);
 
+		m_startButton->Enable();
+		m_stopButton->Disable();
+
+		m_rested->Stop();
+		m_timer->Stop();
+
+		ResetTimer();
+
 		_event.Skip();
+	}
+
+	void MainPanel::OnTimerElapsed(wxTimerEvent& _event)
+	{
+		if (--s_timer_time_remaining < 0)
+		{
+			// TODO: Show the notification
+
+			// Start rested time
+			m_timer->Stop();
+			m_rested->Start(1000);
+
+			s_timer_time_remaining = timer;
+			s_timer_rested_remaining = rest;
+		}
+
+		m_timerValue->SetLabel(wxString::Format(
+			"%s%d:%s%d",
+			s_timer_time_remaining / 60 < 10 ? "0" : "",
+			s_timer_time_remaining / 60,
+			s_timer_time_remaining % 60 < 10 ? "0" : "",
+			s_timer_time_remaining % 60
+		));
+	}
+
+	void MainPanel::OnRestedElapsed(wxTimerEvent& _event)
+	{
+		if (--s_timer_rested_remaining < 0)
+		{
+			// Re-start the timer
+			m_rested->Stop();
+			m_timer->Start(1000);
+
+			s_timer_time_remaining = timer;
+			s_timer_rested_remaining = rest;
+		}
+
+		m_restedValue->SetLabel(wxString::Format(
+			"%s%d:%s%d",
+			s_timer_rested_remaining / 60 < 10 ? "0" : "",
+			s_timer_rested_remaining / 60,
+			s_timer_rested_remaining % 60 < 10 ? "0" : "",
+			s_timer_rested_remaining % 60
+		));
 	}
 
 	void MainPanel::CreateControls()
 	{
 		// Create label to show the value of timer
-		m_timerValue = new wxStaticText(this, wxID_ANY, "20:00");
+		m_timerValue = new wxStaticText(this, wxID_ANY, "");
 		m_timerValue->SetFont(wxFont(90, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false));
 		m_timerValue->SetToolTip("To show the timer...");
 
 		// Create label to show the value of rested
-		m_restedValue = new wxStaticText(this, wxID_ANY, "00:20");
+		m_restedValue = new wxStaticText(this, wxID_ANY, "");
 		m_restedValue->SetFont(wxFont(20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false));
 		m_restedValue->SetToolTip("To show the rested time...");
+
+		ResetTimer();
 
 		// Create start button
 		m_startButton = new wxButton(this, EPR_Button_Start, "&Start");
@@ -85,6 +157,7 @@ namespace EPR
 		// Create stop button
 		m_stopButton = new wxButton(this, EPR_Button_Stop, "&Stop");
 		m_stopButton->SetToolTip("To stop the timer...");
+		m_stopButton->Disable();
 
 		// Create static line
 		wxStaticLine* _staticLine = new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxSize(455, 1), wxLI_HORIZONTAL);
@@ -106,5 +179,34 @@ namespace EPR
 
 		SetSizer(_mainSizer);
 		Layout();
+
+		// Create timer and rested
+		m_timer = new wxTimer();
+		m_rested = new wxTimer();
+
+		m_timer->Bind(wxEVT_TIMER, &EPR::MainPanel::OnTimerElapsed, this);
+		m_rested->Bind(wxEVT_TIMER, &EPR::MainPanel::OnRestedElapsed, this);
+	}
+
+	void MainPanel::ResetTimer()
+	{
+		s_timer_time_remaining = timer;
+		s_timer_rested_remaining = rest;
+
+		m_timerValue->SetLabel(wxString::Format(
+			"%s%d:%s%d",
+			s_timer_time_remaining / 60 < 10 ? "0" : "",
+			s_timer_time_remaining / 60,
+			s_timer_time_remaining % 60 < 10 ? "0" : "",
+			s_timer_time_remaining % 60
+		));
+
+		m_restedValue->SetLabel(wxString::Format(
+			"%s%d:%s%d",
+			s_timer_rested_remaining / 60 < 10 ? "0" : "",
+			s_timer_rested_remaining / 60,
+			s_timer_rested_remaining % 60 < 10 ? "0" : "",
+			s_timer_rested_remaining % 60
+		));
 	}
 }

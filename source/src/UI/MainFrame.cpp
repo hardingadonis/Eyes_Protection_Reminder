@@ -43,10 +43,10 @@ namespace EPR
 	};
 
 	wxBEGIN_EVENT_TABLE(MainFrame, wxFrame)
-		EVT_MENU(EPR_Menu_Hide, MainFrame::OnHide)
-		EVT_MENU(EPR_Menu_Quit, MainFrame::OnQuit)
-		EVT_MENU(EPR_Menu_Settings, MainFrame::OnSettings)
-		EVT_MENU(EPR_Menu_About, MainFrame::OnAbout)
+		EVT_MENU(EPR_Menu_Hide, MainFrame::OnMenuHide)
+		EVT_MENU(EPR_Menu_Quit, MainFrame::OnMenuQuit)
+		EVT_MENU(EPR_Menu_Settings, MainFrame::OnMenuSettings)
+		EVT_MENU(EPR_Menu_About, MainFrame::OnMenuAbout)
 	wxEND_EVENT_TABLE()
 
 	MainFrame::MainFrame(const wxString& _title, const wxSize& _size) :
@@ -58,24 +58,26 @@ namespace EPR
 		CreateControls();
 	}
 
-	void MainFrame::OnHide(wxCommandEvent& _event)
+	void MainFrame::OnMenuHide(wxCommandEvent& _event)
 	{
+		Show(false);
+
 		_event.Skip();
 	}
 
-	void MainFrame::OnQuit(wxCommandEvent& _event)
+	void MainFrame::OnMenuQuit(wxCommandEvent& _event)
 	{
 		Close(true);
 
 		_event.Skip();
 	}
 
-	void MainFrame::OnSettings(wxCommandEvent& _event)
+	void MainFrame::OnMenuSettings(wxCommandEvent& _event)
 	{
 		_event.Skip();
 	}
 
-	void MainFrame::OnAbout(wxCommandEvent& _event)
+	void MainFrame::OnMenuAbout(wxCommandEvent& _event)
 	{
 		wxAboutDialogInfo _aboutInfo;
 

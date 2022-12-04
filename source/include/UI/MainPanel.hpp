@@ -38,12 +38,20 @@ namespace EPR
 		void OnStartButtonPressed(wxCommandEvent& _event);
 		void OnStopButtonPressed(wxCommandEvent& _event);
 
+		void OnTimerElapsed(wxTimerEvent& _event);
+		void OnRestedElapsed(wxTimerEvent& _event);
+
 	private:
 		void CreateControls();
+
+		void ResetTimer();
 
 	private:
 		wxStaticText*	m_timerValue;
 		wxStaticText*	m_restedValue;
+
+		wxTimer*		m_timer;
+		wxTimer*		m_rested;
 
 		wxButton*		m_startButton;
 		wxButton*		m_stopButton;

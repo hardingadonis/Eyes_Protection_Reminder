@@ -36,10 +36,10 @@ namespace EPR
 	public:
 		MainFrame(const wxString& _title, const wxSize& _size);
 
-		void OnHide(wxCommandEvent& _event);
-		void OnQuit(wxCommandEvent& _event);
-		void OnSettings(wxCommandEvent& _event);
-		void OnAbout(wxCommandEvent& _event);
+		void OnMenuHide(wxCommandEvent& _event);
+		void OnMenuQuit(wxCommandEvent& _event);
+		void OnMenuSettings(wxCommandEvent& _event);
+		void OnMenuAbout(wxCommandEvent& _event);
 
 	private:
 		void CreateControls();
