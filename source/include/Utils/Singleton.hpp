@@ -1,4 +1,4 @@
-/*********************************************************************************
+﻿/*********************************************************************************
 *                                                                                *
 * MIT License                                                                    *
 *                                                                                *
@@ -24,68 +24,22 @@
 *                                                                                *
 *********************************************************************************/
 
-#include <wx/wx.h>
-#include <wx/taskbar.h>
-
-#include <Utils/Config.hpp>
-#include <Application.hpp>
+#pragma once
 
 namespace EPR
 {
-    bool Application::OnInit()
-    {
-        m_instanceChecker = new wxSingleInstanceChecker();
+	template<class T>
+	class Singleton
+	{
+	public:
+		Singleton() = default;
+		virtual ~Singleton() = default;
 
-        if (m_instanceChecker->IsAnotherRunning())
-        {
-            wxLogError(_("Another program instance is already running, aborting."));
+		static T* GetInstance()
+		{
+			static T* _instnace = new T();
 
-            delete m_instanceChecker;
-            m_instanceChecker = nullptr;
-
-            return false;
-        }
-
-        if (!wxTaskBarIcon::IsAvailable())
-        {
-            wxMessageBox(
-                "Sorry! This tool can not run on your device.",
-                "Eyes Protection Reminder",
-                wxOK | wxICON_ERROR
-            );
-
-            return false;
-        }
-
-        // Set name for this tool
-        SetAppName("Eyes Protection Remimder");
-
-        // Create the main frame
-        m_mainFrame = new MainFrame("Eyes Protection Remimder - v4.1.0", wxSize(500, 350));
-
-        if (m_mainFrame == nullptr)
-        {
-            return false;
-        }
-
-        m_mainFrame->Center();
-        m_mainFrame->Show();
-        
-        return true;
-    }
-
-    int Application::OnExit()
-    {
-        Config::GetInstance()->Save();
-
-        if (m_instanceChecker != nullptr)
-        {
-            delete m_instanceChecker;
-            m_instanceChecker = nullptr;
-        }
-
-        return 0;
-    }
-
-    wxIMPLEMENT_APP(Application);
+			return _instnace;
+		}
+	};
 }

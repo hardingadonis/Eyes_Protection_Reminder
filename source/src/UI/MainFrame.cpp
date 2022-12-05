@@ -26,10 +26,13 @@
 
 #include <wx/aboutdlg.h>
 #include <wx/generic/aboutdlgg.h>
+#include <wx/fileconf.h>
+#include <wx/stdpaths.h>
 
 #include <UI/MainFrame.hpp>
 #include <UI/EPR_icon_64.xpm>
 #include <UI/EPR_icon_512.xpm>
+#include <Utils/Config.hpp>
 
 namespace EPR
 {

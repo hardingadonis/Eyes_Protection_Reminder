@@ -27,9 +27,7 @@
 #include <wx/statline.h>
 
 #include <UI/MainPanel.hpp>
-
-static int timer = 20;
-static int rest = 5;
+#include <Utils/Config.hpp>
 
 namespace EPR
 {
@@ -72,7 +70,7 @@ namespace EPR
 		m_rested->Stop();
 		m_timer->Start(1000);
 
-		s_timer_time_remaining = timer;
+		s_timer_time_remaining = Config::GetInstance()->GetTimeRemaining();
 
 		_event.Skip();
 	}
@@ -102,8 +100,8 @@ namespace EPR
 			m_timer->Stop();
 			m_rested->Start(1000);
 
-			s_timer_time_remaining = timer;
-			s_timer_rested_remaining = rest;
+			s_timer_time_remaining = Config::GetInstance()->GetTimeRemaining();
+			s_timer_rested_remaining = Config::GetInstance()->GetRestedRemaining();
 		}
 
 		m_timerValue->SetLabel(wxString::Format(
@@ -123,8 +121,8 @@ namespace EPR
 			m_rested->Stop();
 			m_timer->Start(1000);
 
-			s_timer_time_remaining = timer;
-			s_timer_rested_remaining = rest;
+			s_timer_time_remaining = Config::GetInstance()->GetTimeRemaining();
+			s_timer_rested_remaining = Config::GetInstance()->GetRestedRemaining();
 		}
 
 		m_restedValue->SetLabel(wxString::Format(
@@ -190,8 +188,8 @@ namespace EPR
 
 	void MainPanel::ResetTimer()
 	{
-		s_timer_time_remaining = timer;
-		s_timer_rested_remaining = rest;
+		s_timer_time_remaining = Config::GetInstance()->GetTimeRemaining();
+		s_timer_rested_remaining = Config::GetInstance()->GetRestedRemaining();
 
 		m_timerValue->SetLabel(wxString::Format(
 			"%s%d:%s%d",
