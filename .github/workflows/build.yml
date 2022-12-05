@@ -4,9 +4,14 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: Build Project
+    name: Build.Windows.${{ matrix.architecture }}
     runs-on: windows-latest
-
+  
+    strategy:
+      fail-fast: false
+      matrix:
+        architecture: [x86, x64]
+    
     steps:
     - name: Checkout repository and submodules
       uses: actions/checkout@v3
@@ -16,7 +21,7 @@ jobs:
     - name: Setup MSVC Developer Command Prompt
       uses: TheMrMilchmann/setup-msvc-dev@v2.0.0
       with:
-        arch: x64
+        arch: ${{ matrix.architecture }}
     
     - name: Install Ninja build tool
       uses: seanmiddleditch/gha-setup-ninja@v3
@@ -27,8 +32,8 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake .. -DCMAKE_BUILD_TYPE=Debug -DwxUSE_STL=ON -DwxBUILD_COMPATIBILITY="3.1" -DwxBUILD_SHARED=OFF -G"Ninja" -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl
+        cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DwxUSE_STL=ON -DwxBUILD_COMPATIBILITY="3.1" -DwxBUILD_SHARED=OFF -G"Ninja" -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl
     
-    - name: Build
-      working-directory: ${{github.workspace}}/build
-      run: cmake --build . --config Debug --target EPR
+    - name: Build Project
+      working-directory: ${{ github.workspace }}\build
+      run: cmake --build . --config MinSizeRel --target EPR
