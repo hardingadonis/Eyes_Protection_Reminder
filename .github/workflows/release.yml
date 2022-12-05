@@ -27,6 +27,7 @@ jobs:
         arch: ${{ matrix.architecture }}
     
     - name: Install Ninja build tool
+      uses: seanmiddleditch/gha-setup-ninja@v3
       with:
         version: 1.11.1
     
