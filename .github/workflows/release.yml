@@ -12,8 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-      - { architecture = x86 }
-      - { architecture = x64 }
+        architecture: [x86, x64]
     
     steps:
     - name: Checkout repository and submodules
