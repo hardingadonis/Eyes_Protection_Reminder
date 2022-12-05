@@ -30,6 +30,7 @@
 #include <wx/stdpaths.h>
 
 #include <UI/MainFrame.hpp>
+#include <UI/SettingsDialog.hpp>
 #include <UI/EPR_icon_64.xpm>
 #include <UI/EPR_icon_512.xpm>
 #include <Utils/Config.hpp>
@@ -88,6 +89,8 @@ namespace EPR
 
 	void MainFrame::OnMenuSettings(wxCommandEvent& _event)
 	{
+		(new SettingsDialog(this))->ShowModal();
+
 		_event.Skip();
 	}
 

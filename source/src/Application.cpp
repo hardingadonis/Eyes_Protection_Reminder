@@ -30,6 +30,8 @@
 #include <Utils/Config.hpp>
 #include <Application.hpp>
 
+#include <UI/SettingsDialog.hpp>
+
 namespace EPR
 {
     bool Application::OnInit()

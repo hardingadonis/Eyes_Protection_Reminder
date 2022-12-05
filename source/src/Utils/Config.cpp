@@ -82,7 +82,7 @@ namespace EPR
 
 	void Config::SetTimeRemaining(int _timeRemaining)
 	{
-		// The time remaining must be between 20 minutes and 60 minutes
+		// The time remaining must be between 20 minutes to 60 minutes
 		if (_timeRemaining >= 1200 && _timeRemaining <= 3600)
 		{
 			m_timeRemaining = _timeRemaining;
@@ -91,7 +91,7 @@ namespace EPR
 
 	void Config::SetRestedRemaining(int _restedRemaining)
 	{
-		// The rested remaining must be between 20 seconds and 5 minutes
+		// The rested remaining must be between 20 seconds to 5 minutes
 		if (_restedRemaining >= 20 && _restedRemaining <= 300)
 		{
 			m_restedRemaining = _restedRemaining;
@@ -100,7 +100,7 @@ namespace EPR
 
 	void Config::SetTimeNotification(int _timeNotification)
 	{
-		// The time notification must be between 10 seconds and 60 seconds
+		// The time notification must be between 10 seconds to 60 seconds
 		if (_timeNotification >= 10 && _timeNotification <= 60)
 		{
 			m_timeNotification = _timeNotification;

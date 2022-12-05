@@ -27,7 +27,29 @@
 #pragma once
 
 #include <wx/wx.h>
+#include <wx/spinctrl.h>
 
 namespace EPR
 {
+	class SettingsDialog : public wxDialog
+	{
+	public:
+		SettingsDialog(wxWindow* _parent);
+		virtual ~SettingsDialog() = default;
+
+		void OnSaveButtonPressed(wxCommandEvent& _event);
+
+	private:
+		void CreateControls();
+
+	private:
+		wxSpinCtrl*		m_timeRemaining;
+		wxSpinCtrl*		m_restedRemaining;
+		wxSpinCtrl*		m_timeNotification;
+		wxTextCtrl*		m_stringNotification;
+		wxCheckBox*		m_startupWithWindows;
+
+	public:
+		wxDECLARE_EVENT_TABLE();
+	};
 }

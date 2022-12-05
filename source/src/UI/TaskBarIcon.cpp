@@ -28,17 +28,17 @@
 
 namespace EPR
 {
-	enum EPR_TaksBar_Menu
+	enum EPR_Menu
 	{
-		EPR_TaksBar_Menu_Restore	= 12001,
-		EPR_TaskBar_Menu_Source		= 12002,
-		EPR_TaskBar_Menu_Exit		= 12003
+		EPR_Menu_Restore	= 12001,
+		EPR_Menu_Source		= 12002,
+		EPR_Menu_Exit		= 12003
 	};
 
 	wxBEGIN_EVENT_TABLE(TaskBarIcon, wxTaskBarIcon)
-		EVT_MENU(EPR_TaksBar_Menu_Restore, TaskBarIcon::OnMenuRestore)
-		EVT_MENU(EPR_TaskBar_Menu_Source, TaskBarIcon::OnMenuSource)
-		EVT_MENU(EPR_TaskBar_Menu_Exit, TaskBarIcon::OnMenuExit)
+		EVT_MENU(EPR_Menu_Restore, TaskBarIcon::OnMenuRestore)
+		EVT_MENU(EPR_Menu_Source, TaskBarIcon::OnMenuSource)
+		EVT_MENU(EPR_Menu_Exit, TaskBarIcon::OnMenuExit)
 	wxEND_EVENT_TABLE()
 
 	TaskBarIcon::TaskBarIcon(wxWindow* _parent, wxTaskBarIconType _iconType) :
@@ -72,11 +72,11 @@ namespace EPR
 	{
 		wxMenu* _menu = new wxMenu();
 
-		_menu->Append(EPR_TaksBar_Menu_Restore, "&Restore Main Window");
+		_menu->Append(EPR_Menu_Restore, "&Restore Main Window");
 		_menu->AppendSeparator();
-		_menu->Append(EPR_TaskBar_Menu_Source, "&Source Code");
+		_menu->Append(EPR_Menu_Source, "&Source Code");
 		_menu->AppendSeparator();
-		_menu->Append(EPR_TaskBar_Menu_Exit, "&Exit");
+		_menu->Append(EPR_Menu_Exit, "&Exit");
 
 		return _menu;
 	}

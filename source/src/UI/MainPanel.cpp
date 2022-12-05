@@ -97,7 +97,7 @@ namespace EPR
 	{
 		if (--s_timer_time_remaining < 0)
 		{
-			// TODO: Show the notification
+			// Show the notification
 			m_taskBarIcon->ShowBalloon(
 				"Eyes Protection Remimder",
 				Config::GetInstance()->GetStringNotification(),
