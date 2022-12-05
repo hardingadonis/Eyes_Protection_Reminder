@@ -24,4 +24,4 @@ template: |
 
   ## Previous Release
 
-  $PREVIOUS_TAG
+  - [Eyes_Protection_Reminder_$PREVIOUS_TAG](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/$PREVIOUS_TAG)
