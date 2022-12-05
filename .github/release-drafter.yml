@@ -1,0 +1,27 @@
+name-template: 'Eyes_Protection_Reminder_v$NEXT_MINOR_VERSION 👀'
+tag-template: $NEXT_MINOR_VERSION
+categories:
+  - title: '🚀 Features'
+    labels:
+      - 'feature'
+  - title: '🤬 Bugs'
+    labels:
+      - 'bug'
+      - 'fix'
+      - 'bugfix'
+change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+change-title-escapes: '\<*_&'
+
+template: |
+  ## What's Changed
+
+  $CHANGES
+
+  ## Contributors
+
+  $CONTRIBUTORS
+
+footer: |
+  ## Repository
+
+  $REPOSITORY
