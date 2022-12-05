@@ -11,6 +11,7 @@ categories:
       - 'bugfix'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 change-title-escapes: '\<*_&'
+prerelease: false
 
 template: |
   ## What's Changed
@@ -21,7 +22,6 @@ template: |
 
   $CONTRIBUTORS
 
-footer: |
-  ## Repository
+  ## Previous Release
 
-  $REPOSITORY
+  $PREVIOUS_TAG
