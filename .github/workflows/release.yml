@@ -13,13 +13,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Release Drafter
+    - name: Create New Draft
       uses: release-drafter/release-drafter@v5.21.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  get_url_draft:
+    name: Get URL of Release Draft
+    needs: update_release_draft
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Get URL of draft dhat just created
+      uses: cardinalby/git-get-release-action@1.2.4
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        latest: false
+        draft: true
+
   build:
     name: Release.Windows.${{ matrix.architecture }}
+    needs: get_url_draft
     runs-on: windows-latest
   
     strategy:
