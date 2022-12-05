@@ -5,6 +5,17 @@ on:
     branches: [test-ci-cd]
 
 jobs:
+  update_release_draft:
+    permissions:
+      contents: write
+      pull-requests: write
+    name: Update Release Draft
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Release Drafter
+      uses: release-drafter/release-drafter@v5.21.1
+
   build:
     name: Release.Windows.${{ matrix.architecture }}
     runs-on: windows-latest
@@ -36,7 +47,7 @@ jobs:
         cd build
         cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DwxUSE_STL=ON -DwxBUILD_COMPATIBILITY="3.1" -DwxBUILD_SHARED=OFF -G"Ninja" -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl
     
-    - name: Build Project
+    - name: Build project
       working-directory: ${{ github.workspace }}\build
       run: cmake --build . --config MinSizeRel --target EPR
     
