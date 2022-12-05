@@ -15,8 +15,8 @@ jobs:
     steps:
     - name: Release Drafter
       uses: release-drafter/release-drafter@v5.21.1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build:
     name: Release.Windows.${{ matrix.architecture }}
