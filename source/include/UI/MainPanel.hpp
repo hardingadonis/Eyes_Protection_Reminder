@@ -27,13 +27,14 @@
 #pragma once
 
 #include <wx/wx.h>
+#include <wx/taskbar.h>
 
 namespace EPR
 {
 	class MainPanel : public wxPanel
 	{
 	public:
-		MainPanel(wxWindow* _parent);
+		MainPanel(wxWindow* _parent, wxTaskBarIcon* _taskBarIcon);
 
 		void OnStartButtonPressed(wxCommandEvent& _event);
 		void OnStopButtonPressed(wxCommandEvent& _event);
@@ -57,6 +58,7 @@ namespace EPR
 		wxButton*		m_stopButton;
 
 		wxFrameBase*	m_parent;
+		wxTaskBarIcon*	m_taskBarIcon;
 
 	public:
 		wxDECLARE_EVENT_TABLE();

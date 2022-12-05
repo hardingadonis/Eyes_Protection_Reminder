@@ -28,6 +28,7 @@
 
 #include <wx/wx.h>
 #include <UI/MainPanel.hpp>
+#include <UI/TaskBarIcon.hpp>
 
 namespace EPR
 {
@@ -46,6 +47,7 @@ namespace EPR
 
 	private:
 		MainPanel*		m_mainPanel;
+		TaskBarIcon*	m_taskBarIcon;
 
 	public:
 		wxDECLARE_EVENT_TABLE();

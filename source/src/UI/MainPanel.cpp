@@ -27,6 +27,8 @@
 #include <wx/statline.h>
 
 #include <UI/MainPanel.hpp>
+#include <UI/TaskBarIcon.hpp>
+#include <UI/EPR_icon_512.xpm>
 #include <Utils/Config.hpp>
 
 namespace EPR
@@ -47,7 +49,7 @@ namespace EPR
 		EVT_BUTTON(EPR_Button_Stop, MainPanel::OnStopButtonPressed)
 	wxEND_EVENT_TABLE()
 
-	MainPanel::MainPanel(wxWindow* _parent) :
+	MainPanel::MainPanel(wxWindow* _parent, wxTaskBarIcon* _taskBarIcon) :
 		wxPanel(_parent, wxID_ANY),
 		m_timerValue(nullptr),
 		m_restedValue(nullptr),
@@ -55,7 +57,8 @@ namespace EPR
 		m_rested(nullptr),
 		m_startButton(nullptr),
 		m_stopButton(nullptr),
-		m_parent((wxFrameBase*)_parent)
+		m_parent((wxFrameBase*)_parent),
+		m_taskBarIcon(_taskBarIcon)
 	{
 		CreateControls();
 	}
@@ -95,6 +98,13 @@ namespace EPR
 		if (--s_timer_time_remaining < 0)
 		{
 			// TODO: Show the notification
+			m_taskBarIcon->ShowBalloon(
+				"Eyes Protection Remimder",
+				Config::GetInstance()->GetStringNotification(),
+				Config::GetInstance()->GetTimeNotification() * 1000,
+				wxICON_INFORMATION,
+				wxBitmapBundle(s_EPR_icon_512)
+			);
 
 			// Start rested time
 			m_timer->Stop();

@@ -58,6 +58,10 @@ namespace EPR
 	{
 		SetIcon(s_EPR_icon_512);
 
+		// Setup for task bar icon
+		m_taskBarIcon = new TaskBarIcon();
+		m_taskBarIcon->SetIcon(wxBitmapBundle(s_EPR_icon_512), "A small tool to remind you to\nprotect your eyes with the 20:20:20 rule.");
+
 		CreateControls();
 	}
 
@@ -154,7 +158,7 @@ namespace EPR
 		SetMenuBar(_menuBar);
 
 		// Create main panel
-		m_mainPanel = new MainPanel(this);
+		m_mainPanel = new MainPanel(this, m_taskBarIcon);
 
 		// Create status bar
 		CreateStatusBar(2);
