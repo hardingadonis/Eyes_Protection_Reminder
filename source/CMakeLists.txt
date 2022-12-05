@@ -24,6 +24,6 @@ set(EPR_SOURCE_SRCS     ${CMAKE_CURRENT_SOURCE_DIR}/src/UI/MainFrame.cpp
 set(EPR_SOURCES ${EPR_SOURCE_HEADERS} ${EPR_SOURCE_SRCS})
 
 add_executable(${PROJECT_NAME} WIN32 ${EPR_SOURCES})
-target_link_libraries(${PROJECT_NAME} PUBLIC wx::core wx::base wx::net)
+target_link_libraries(${PROJECT_NAME} PUBLIC wx::core wx::base)
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "Eyes_Protection_Reminder_v4.1.0")
