@@ -50,6 +50,7 @@ namespace EPR
 		EVT_MENU(EPR_Menu_Quit, MainFrame::OnMenuQuit)
 		EVT_MENU(EPR_Menu_Settings, MainFrame::OnMenuSettings)
 		EVT_MENU(EPR_Menu_About, MainFrame::OnMenuAbout)
+		EVT_CLOSE(MainFrame::OnCloseWindow)
 	wxEND_EVENT_TABLE()
 
 	MainFrame::MainFrame(const wxString& _title, const wxSize& _size) :
@@ -59,10 +60,16 @@ namespace EPR
 		SetIcon(s_EPR_icon_512);
 
 		// Setup for task bar icon
-		m_taskBarIcon = new TaskBarIcon();
+		m_taskBarIcon = new TaskBarIcon(this);
 		m_taskBarIcon->SetIcon(wxBitmapBundle(s_EPR_icon_512), "A small tool to remind you to\nprotect your eyes with the 20:20:20 rule.");
 
 		CreateControls();
+	}
+
+	MainFrame::~MainFrame()
+	{
+		delete m_taskBarIcon;
+		m_taskBarIcon = nullptr;
 	}
 
 	void MainFrame::OnMenuHide(wxCommandEvent& _event)
@@ -129,6 +136,13 @@ namespace EPR
 
 		// Generate the about dialog
 		wxGenericAboutBox(_aboutInfo, this);
+
+		_event.Skip();
+	}
+
+	void MainFrame::OnCloseWindow(wxCloseEvent& _event)
+	{
+		Destroy();
 
 		_event.Skip();
 	}
