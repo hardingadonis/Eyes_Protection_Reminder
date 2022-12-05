@@ -8,7 +8,7 @@
 ![License](https://img.shields.io/github/license/hardingadonis/Eyes_Protection_Reminder?style=flat)
 [![Download](https://img.shields.io/github/downloads/hardingadonis/Eyes_Protection_Reminder/v4.1.x/total?style=flat)](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.x)
 
-## I. Introduction
+## Introduction
 
 You are a student?
 
@@ -20,18 +20,18 @@ Don't worry, that tool is for you!!!
 
 Let see...
 
-## II. Images
+## Images
 
 ![EPR_image_1](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/image_1.png)  
 ![EPR_image_2](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/image_2.png)  
 ![EPR_image_3](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/image_3.png)
 
-## III. Requirements
+## Requirements
 - Windows OS (just only Windows, not Linux)
 - Visual Studio (any version)
 - CMake 3.10.2 or above
 
-## IV. Install
+## Install
 
 - Clone repository
 ```bash
@@ -60,11 +60,11 @@ Now, run it!!!
 
 - Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.x)
 
-## V. License
+## License
 
 MIT License
 
-Copyright (c) 2022 [Harding Adonis](https://github.com/hardingadonis), [hoanghy0112](https://github.com/hoanghy0112), [AlexPhoenix45](https://github.com/AlexPhoenix45)
+Copyright (c) 2022 [Minh Vương](https://github.com/hardingadonis)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

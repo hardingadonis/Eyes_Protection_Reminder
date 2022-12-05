@@ -2,7 +2,7 @@
 *                                                                                *
 * MIT License                                                                    *
 *                                                                                *
-* Copyright (c) 2022 Harding Adonis, hoanghy0112, AlexPhoenix45                  *
+* Copyright (c) 2022 Minh Vương                                                  *
 *                                                                                *
 * Permission is hereby granted, free of charge, to any person obtaining a copy   *
 * of this software and associated documentation files (the "Software"), to deal  *
@@ -24,13 +24,21 @@
 *                                                                                *
 *********************************************************************************/
 
+#include <wx/aboutdlg.h>
+#include <wx/generic/aboutdlgg.h>
+#include <wx/fileconf.h>
+#include <wx/stdpaths.h>
+
 #include <UI/MainFrame.hpp>
+#include <UI/SettingsDialog.hpp>
+#include <UI/EPR_icon_64.xpm>
 #include <UI/EPR_icon_512.xpm>
+#include <Utils/Config.hpp>
 
 namespace EPR
 {
 	// IDs for the menu commands
-	enum
+	enum EPR_Menu
 	{
 		EPR_Menu_Hide		= 10001,
 		EPR_Menu_Quit		= wxID_EXIT,
@@ -39,10 +47,11 @@ namespace EPR
 	};
 
 	wxBEGIN_EVENT_TABLE(MainFrame, wxFrame)
-		EVT_MENU(EPR_Menu_Hide, MainFrame::OnHide)
-		EVT_MENU(EPR_Menu_Quit, MainFrame::OnQuit)
-		EVT_MENU(EPR_Menu_Settings, MainFrame::OnSettings)
-		EVT_MENU(EPR_Menu_About, MainFrame::OnAbout)
+		EVT_MENU(EPR_Menu_Hide, MainFrame::OnMenuHide)
+		EVT_MENU(EPR_Menu_Quit, MainFrame::OnMenuQuit)
+		EVT_MENU(EPR_Menu_Settings, MainFrame::OnMenuSettings)
+		EVT_MENU(EPR_Menu_About, MainFrame::OnMenuAbout)
+		EVT_CLOSE(MainFrame::OnCloseWindow)
 	wxEND_EVENT_TABLE()
 
 	MainFrame::MainFrame(const wxString& _title, const wxSize& _size) :
@@ -51,28 +60,93 @@ namespace EPR
 	{
 		SetIcon(s_EPR_icon_512);
 
+		// Setup for task bar icon
+		m_taskBarIcon = new TaskBarIcon(this);
+		m_taskBarIcon->SetIcon(wxBitmapBundle(s_EPR_icon_512), "A small tool to remind you to\nprotect your eyes with the 20:20:20 rule.");
+
 		CreateControls();
 	}
 
-	void MainFrame::OnHide(wxCommandEvent& _event)
+	MainFrame::~MainFrame()
 	{
+		delete m_taskBarIcon;
+		m_taskBarIcon = nullptr;
+	}
+
+	void MainFrame::OnMenuHide(wxCommandEvent& _event)
+	{
+		Show(false);
+
 		_event.Skip();
 	}
 
-	void MainFrame::OnQuit(wxCommandEvent& _event)
+	void MainFrame::OnMenuQuit(wxCommandEvent& _event)
 	{
 		Close(true);
 
 		_event.Skip();
 	}
 
-	void MainFrame::OnSettings(wxCommandEvent& _event)
+	void MainFrame::OnMenuSettings(wxCommandEvent& _event)
 	{
+		(new SettingsDialog(this))->ShowModal();
+
 		_event.Skip();
 	}
 
-	void MainFrame::OnAbout(wxCommandEvent& _event)
+	void MainFrame::OnMenuAbout(wxCommandEvent& _event)
 	{
+		wxAboutDialogInfo _aboutInfo;
+
+		// Set the information for about dialog
+		_aboutInfo.SetName(wxTheApp->GetAppName());
+		_aboutInfo.SetVersion("- v4.1.0");
+		_aboutInfo.SetIcon(s_EPR_icon_64);
+		_aboutInfo.SetCopyright("Copyright (c) 2022 " + wxString::FromUTF8("Minh Vương.") + "\nAll rights reserved.");
+		_aboutInfo.SetDescription("A small tool to remind you to\nprotect your eyes with the 20:20:20 rule.");
+
+		_aboutInfo.SetWebSite("https://github.com/hardingadonis/Eyes_Protection_Reminder", "Source Code");
+
+		_aboutInfo.SetLicense(
+			"MIT License\n"
+			"\n" +
+			wxString::FromUTF8("Copyright (c) 2022 Minh Vương\n") +
+			"\n"
+			"Permission is hereby granted, free of charge, to any person obtaining a copy\n"
+			"of this software and associated documentation files (the \"Software\"), to deal\n"
+			"in the Software without restriction, including without limitation the rights\n"
+			"to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n"
+			"copies of the Software, and to permit persons to whom the Software is\n"
+			"furnished to do so, subject to the following conditions:\n"
+			"\n"
+			"The above copyright notice and this permission notice shall be included in all\n"
+			"copies or substantial portions of the Software.\n"
+			"\n"
+			"THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n"
+			"IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,y\n"
+			"FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n"
+			"AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n"
+			"LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n"
+			"OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n"
+			"SOFTWARE.\n"
+		);
+
+		_aboutInfo.AddDeveloper(wxString::FromUTF8("Minh Vương"));
+		_aboutInfo.AddDeveloper("Contributors");
+
+		_aboutInfo.AddDocWriter(wxString::FromUTF8("Minh Vương"));
+		_aboutInfo.AddDocWriter("Contributors");
+
+		// Generate the about dialog
+		wxGenericAboutBox(_aboutInfo, this);
+
+		_event.Skip();
+	}
+
+	void MainFrame::OnCloseWindow(wxCloseEvent& _event)
+	{
+		Destroy();
+
 		_event.Skip();
 	}
 
@@ -101,10 +175,10 @@ namespace EPR
 		SetMenuBar(_menuBar);
 
 		// Create main panel
-		m_mainPanel = new MainPanel(this);
+		m_mainPanel = new MainPanel(this, m_taskBarIcon);
 
 		// Create status bar
-		CreateStatusBar(1);
+		CreateStatusBar(2);
 		SetStatusText("Welcome to Eyes Protection Reminder!");
 	}
 }

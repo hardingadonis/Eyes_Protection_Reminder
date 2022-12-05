@@ -1,4 +1,4 @@
-/*********************************************************************************
+﻿/*********************************************************************************
 *                                                                                *
 * MIT License                                                                    *
 *                                                                                *
@@ -24,70 +24,32 @@
 *                                                                                *
 *********************************************************************************/
 
+#pragma once
+
 #include <wx/wx.h>
-#include <wx/taskbar.h>
-
-#include <Utils/Config.hpp>
-#include <Application.hpp>
-
-#include <UI/SettingsDialog.hpp>
+#include <wx/spinctrl.h>
 
 namespace EPR
 {
-    bool Application::OnInit()
-    {
-        m_instanceChecker = new wxSingleInstanceChecker();
+	class SettingsDialog : public wxDialog
+	{
+	public:
+		SettingsDialog(wxWindow* _parent);
+		virtual ~SettingsDialog() = default;
 
-        if (m_instanceChecker->IsAnotherRunning())
-        {
-            wxLogError(_("Another program instance is already running, aborting."));
+		void OnSaveButtonPressed(wxCommandEvent& _event);
 
-            delete m_instanceChecker;
-            m_instanceChecker = nullptr;
+	private:
+		void CreateControls();
 
-            return false;
-        }
+	private:
+		wxSpinCtrl*		m_timeRemaining;
+		wxSpinCtrl*		m_restedRemaining;
+		wxSpinCtrl*		m_timeNotification;
+		wxTextCtrl*		m_stringNotification;
+		wxCheckBox*		m_startupWithWindows;
 
-        if (!wxTaskBarIcon::IsAvailable())
-        {
-            wxMessageBox(
-                "Sorry! This tool can not run on your device.",
-                "Eyes Protection Reminder",
-                wxOK | wxICON_ERROR
-            );
-
-            return false;
-        }
-
-        // Set name for this tool
-        SetAppName("Eyes Protection Remimder");
-
-        // Create the main frame
-        m_mainFrame = new MainFrame("Eyes Protection Remimder - v4.1.0", wxSize(500, 350));
-
-        if (m_mainFrame == nullptr)
-        {
-            return false;
-        }
-
-        m_mainFrame->Center();
-        m_mainFrame->Show();
-        
-        return true;
-    }
-
-    int Application::OnExit()
-    {
-        Config::GetInstance()->Save();
-
-        if (m_instanceChecker != nullptr)
-        {
-            delete m_instanceChecker;
-            m_instanceChecker = nullptr;
-        }
-
-        return 0;
-    }
-
-    wxIMPLEMENT_APP(Application);
+	public:
+		wxDECLARE_EVENT_TABLE();
+	};
 }

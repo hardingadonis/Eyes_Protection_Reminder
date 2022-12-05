@@ -2,7 +2,7 @@
 *                                                                                *
 * MIT License                                                                    *
 *                                                                                *
-* Copyright (c) 2022 Harding Adonis, hoanghy0112, AlexPhoenix45                  *
+* Copyright (c) 2022 Minh Vương                                                  *
 *                                                                                *
 * Permission is hereby granted, free of charge, to any person obtaining a copy   *
 * of this software and associated documentation files (the "Software"), to deal  *
@@ -27,23 +27,38 @@
 #pragma once
 
 #include <wx/wx.h>
+#include <wx/taskbar.h>
 
 namespace EPR
 {
 	class MainPanel : public wxPanel
 	{
 	public:
-		MainPanel(wxWindow* _parent);
+		MainPanel(wxWindow* _parent, wxTaskBarIcon* _taskBarIcon);
+
+		void OnStartButtonPressed(wxCommandEvent& _event);
+		void OnStopButtonPressed(wxCommandEvent& _event);
+
+		void OnTimerElapsed(wxTimerEvent& _event);
+		void OnRestedElapsed(wxTimerEvent& _event);
 
 	private:
 		void CreateControls();
+
+		void ResetTimer();
 
 	private:
 		wxStaticText*	m_timerValue;
 		wxStaticText*	m_restedValue;
 
+		wxTimer*		m_timer;
+		wxTimer*		m_rested;
+
 		wxButton*		m_startButton;
 		wxButton*		m_stopButton;
+
+		wxFrameBase*	m_parent;
+		wxTaskBarIcon*	m_taskBarIcon;
 
 	public:
 		wxDECLARE_EVENT_TABLE();

@@ -1,4 +1,4 @@
-/*********************************************************************************
+﻿/*********************************************************************************
 *                                                                                *
 * MIT License                                                                    *
 *                                                                                *
@@ -24,70 +24,46 @@
 *                                                                                *
 *********************************************************************************/
 
+#pragma once
+
 #include <wx/wx.h>
-#include <wx/taskbar.h>
 
-#include <Utils/Config.hpp>
-#include <Application.hpp>
-
-#include <UI/SettingsDialog.hpp>
+#include <Utils/Singleton.hpp>
 
 namespace EPR
 {
-    bool Application::OnInit()
-    {
-        m_instanceChecker = new wxSingleInstanceChecker();
+	class Config final : public Singleton<Config>
+	{
+	public:
+		Config();
+		~Config() = default;
 
-        if (m_instanceChecker->IsAnotherRunning())
-        {
-            wxLogError(_("Another program instance is already running, aborting."));
+		// Getters
+		int GetTimeRemaining() const;
+		int GetRestedRemaining() const;
+		int GetTimeNotification() const;
+		wxString GetStringNotification() const;
+		bool GetStartupWithWindows() const;
 
-            delete m_instanceChecker;
-            m_instanceChecker = nullptr;
+		// Setters
+		void SetTimeRemaining(int _timeRemaining);
+		void SetRestedRemaining(int _restedRemaining);
+		void SetTimeNotification(int _timeNotification);
+		void SetStringNotification(const wxString& _stringNotification);
+		void SetStartupWithWindows(bool _startupWithWindows);
 
-            return false;
-        }
+		// Save config file
+		void Save();
 
-        if (!wxTaskBarIcon::IsAvailable())
-        {
-            wxMessageBox(
-                "Sorry! This tool can not run on your device.",
-                "Eyes Protection Reminder",
-                wxOK | wxICON_ERROR
-            );
+	private:
+		void LoadConfigFromFile();
+		void LoadDefaultConfig();
 
-            return false;
-        }
-
-        // Set name for this tool
-        SetAppName("Eyes Protection Remimder");
-
-        // Create the main frame
-        m_mainFrame = new MainFrame("Eyes Protection Remimder - v4.1.0", wxSize(500, 350));
-
-        if (m_mainFrame == nullptr)
-        {
-            return false;
-        }
-
-        m_mainFrame->Center();
-        m_mainFrame->Show();
-        
-        return true;
-    }
-
-    int Application::OnExit()
-    {
-        Config::GetInstance()->Save();
-
-        if (m_instanceChecker != nullptr)
-        {
-            delete m_instanceChecker;
-            m_instanceChecker = nullptr;
-        }
-
-        return 0;
-    }
-
-    wxIMPLEMENT_APP(Application);
+	private:
+		int			m_timeRemaining;
+		int			m_restedRemaining;
+		int			m_timeNotification;
+		wxString	m_stringNotification;
+		bool		m_startupWithWindows;
+	};
 }

@@ -2,7 +2,7 @@
 *                                                                                *
 * MIT License                                                                    *
 *                                                                                *
-* Copyright (c) 2022 Harding Adonis, hoanghy0112, AlexPhoenix45                  *
+* Copyright (c) 2022 Minh Vương                                                  *
 *                                                                                *
 * Permission is hereby granted, free of charge, to any person obtaining a copy   *
 * of this software and associated documentation files (the "Software"), to deal  *
@@ -28,6 +28,7 @@
 
 #include <wx/wx.h>
 #include <UI/MainPanel.hpp>
+#include <UI/TaskBarIcon.hpp>
 
 namespace EPR
 {
@@ -35,17 +36,21 @@ namespace EPR
 	{
 	public:
 		MainFrame(const wxString& _title, const wxSize& _size);
+		~MainFrame();
 
-		void OnHide(wxCommandEvent& _event);
-		void OnQuit(wxCommandEvent& _event);
-		void OnSettings(wxCommandEvent& _event);
-		void OnAbout(wxCommandEvent& _event);
+		void OnMenuHide(wxCommandEvent& _event);
+		void OnMenuQuit(wxCommandEvent& _event);
+		void OnMenuSettings(wxCommandEvent& _event);
+		void OnMenuAbout(wxCommandEvent& _event);
+
+		void OnCloseWindow(wxCloseEvent& _event);
 
 	private:
 		void CreateControls();
 
 	private:
 		MainPanel*		m_mainPanel;
+		TaskBarIcon*	m_taskBarIcon;
 
 	public:
 		wxDECLARE_EVENT_TABLE();

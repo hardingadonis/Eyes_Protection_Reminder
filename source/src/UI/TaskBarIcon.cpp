@@ -2,7 +2,7 @@
 *                                                                                *
 * MIT License                                                                    *
 *                                                                                *
-* Copyright (c) 2022 Harding Adonis, hoanghy0112, AlexPhoenix45                  *
+* Copyright (c) 2022 Minh Vương                                                  *
 *                                                                                *
 * Permission is hereby granted, free of charge, to any person obtaining a copy   *
 * of this software and associated documentation files (the "Software"), to deal  *
@@ -28,13 +28,56 @@
 
 namespace EPR
 {
-	TaskBarIcon::TaskBarIcon(wxTaskBarIconType _iconType) :
-		wxTaskBarIcon(_iconType)
+	enum EPR_Menu
 	{
+		EPR_Menu_Restore	= 12001,
+		EPR_Menu_Source		= 12002,
+		EPR_Menu_Exit		= 12003
+	};
+
+	wxBEGIN_EVENT_TABLE(TaskBarIcon, wxTaskBarIcon)
+		EVT_MENU(EPR_Menu_Restore, TaskBarIcon::OnMenuRestore)
+		EVT_MENU(EPR_Menu_Source, TaskBarIcon::OnMenuSource)
+		EVT_MENU(EPR_Menu_Exit, TaskBarIcon::OnMenuExit)
+	wxEND_EVENT_TABLE()
+
+	TaskBarIcon::TaskBarIcon(wxWindow* _parent, wxTaskBarIconType _iconType) :
+		wxTaskBarIcon(_iconType),
+		m_parent((wxFrameBase*)_parent)
+	{
+	}
+
+	void TaskBarIcon::OnMenuRestore(wxCommandEvent& _event)
+	{
+		m_parent->Show();
+
+		_event.Skip();
+	}
+
+	void TaskBarIcon::OnMenuSource(wxCommandEvent& _event)
+	{
+		wxLaunchDefaultBrowser("https://github.com/hardingadonis/Eyes_Protection_Reminder");
+
+		_event.Skip();
+	}
+
+	void TaskBarIcon::OnMenuExit(wxCommandEvent& _event)
+	{
+		m_parent->Close(true);
+
+		_event.Skip();
 	}
 
 	wxMenu* TaskBarIcon::CreatePopupMenu()
 	{
-		return wxTaskBarIcon::CreatePopupMenu();
+		wxMenu* _menu = new wxMenu();
+
+		_menu->Append(EPR_Menu_Restore, "&Restore Main Window");
+		_menu->AppendSeparator();
+		_menu->Append(EPR_Menu_Source, "&Source Code");
+		_menu->AppendSeparator();
+		_menu->Append(EPR_Menu_Exit, "&Exit");
+
+		return _menu;
 	}
 }

@@ -2,7 +2,7 @@
 *                                                                                *
 * MIT License                                                                    *
 *                                                                                *
-* Copyright (c) 2022 Harding Adonis, hoanghy0112, AlexPhoenix45                  *
+* Copyright (c) 2022 Minh Vương                                                  *
 *                                                                                *
 * Permission is hereby granted, free of charge, to any person obtaining a copy   *
 * of this software and associated documentation files (the "Software"), to deal  *
@@ -34,11 +34,19 @@ namespace EPR
 	class TaskBarIcon : public wxTaskBarIcon
 	{
 	public:
-		TaskBarIcon(wxTaskBarIconType _iconType = wxTBI_DEFAULT_TYPE);
+		TaskBarIcon(wxWindow* _parent, wxTaskBarIconType _iconType = wxTBI_DEFAULT_TYPE);
+
+		void OnMenuRestore(wxCommandEvent& _event);
+		void OnMenuSource(wxCommandEvent& _event);
+		void OnMenuExit(wxCommandEvent& _event);
 
 	protected:
 		wxMenu* CreatePopupMenu() override;
 
 	private:
+		wxFrameBase*	m_parent;
+
+	public:
+		wxDECLARE_EVENT_TABLE();
 	};
 }
