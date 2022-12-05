@@ -18,6 +18,8 @@ template: |
 
   $CHANGES
 
+  Full Changelog: `[$PREVIOUS_TAG..$NEXT_MINOR_VERSION](https://github.com/hardingadonis/Eyes_Protection_Reminder/compare/$PREVIOUS_TAG..$NEXT_MINOR_VERSION)`
+
   ## Contributors
 
   $CONTRIBUTORS
