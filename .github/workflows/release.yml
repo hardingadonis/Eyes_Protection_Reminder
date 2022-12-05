@@ -2,13 +2,19 @@ name: Lastest Release
 
 on:
   push:
-    branches: [main]
+    branches: [test-ci-cd]
 
 jobs:
-  release:
-    name: "Lastest Release"
+  build:
+    name: Release.Windows.${{ matrix.architecture }}
     runs-on: windows-latest
-
+  
+    strategy:
+      fail-fast: false
+      matrix:
+      - { architecture = x86 }
+      - { architecture = x64 }
+    
     steps:
     - name: Checkout repository and submodules
       uses: actions/checkout@v3
@@ -18,11 +24,11 @@ jobs:
     - name: Setup MSVC Developer Command Prompt
       uses: TheMrMilchmann/setup-msvc-dev@v2.0.0
       with:
-        arch: x64
-        version: 1.11.1
+        arch: ${{ matrix.architecture }}
     
     - name: Install Ninja build tool
-      uses: seanmiddleditch/gha-setup-ninja@v3
+      with:
+        version: 1.11.1
     
     - name: Configure CMake
       run: |
@@ -30,22 +36,13 @@ jobs:
         cd build
         cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DwxUSE_STL=ON -DwxBUILD_COMPATIBILITY="3.1" -DwxBUILD_SHARED=OFF -G"Ninja" -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl
     
-    - name: Build
-      working-directory: ${{github.workspace}}\build
+    - name: Build Project
+      working-directory: ${{ github.workspace }}\build
       run: cmake --build . --config MinSizeRel --target EPR
     
     - name: Zip executable files
       uses: TheDoctor0/zip-release@0.6.2
       with:
-        type: "zip"
-        filename: "Eyes_Protection_Reminder_v4.1.0.zip"
-        path: ${{github.workspace}}\build\source\Eyes_Protection_Reminder_v4.1.0.exe
-    
-    - name: Public release files
-      uses: marvinpinto/action-automatic-releases@latest
-      with:
-        repo_token: "${{secrets.GITHUB_TOKEN}}"
-        automatic_release_tag: "v4.1.x"
-        prerelease: false
-        title: "Eyes_Protection_Reminder_v4.1.0"
-        files: Eyes_Protection_Reminder_v4.1.0.zip
+        type: zip
+        filename: Eyes_Protection_Reminder_v4.1.0.Windows.${{ matrix.architecture }}.zip
+        path: ${{ github.workspace }}\build\source\Eyes_Protection_Reminder_v4.1.0.Windows.${{ matrix.architecture }}.exe
