@@ -2,7 +2,7 @@ name: Lastest Release
 
 on:
   push:
-    branches: [test-ci-cd]
+    branches: [main]
 
 jobs:
   update_release_draft:
