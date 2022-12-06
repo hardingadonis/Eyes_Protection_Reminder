@@ -30,6 +30,8 @@
 
 #include <Utils/Config.hpp>
 
+#include <Windows.h>
+
 namespace EPR
 {
 	namespace Priv
@@ -42,6 +44,30 @@ namespace EPR
 
 		static wxString PATH;
 		static wxString FILE = "EPR_config.ini";
+
+		void AddRegistry()
+		{
+			HKEY _hkey;
+			LONG _key = RegOpenKeyExA(HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows\\Currentversion\\Run", 0, KEY_WRITE, &_hkey);
+
+			if (_key == ERROR_SUCCESS)
+			{
+				std::string _executablePath = wxStandardPaths::Get().GetExecutablePath().ToStdString();
+
+				_key = RegSetValueExA(_hkey, "Eyes Protection Remimder", 0, REG_SZ, (BYTE*)_executablePath.c_str(), strlen(_executablePath.c_str()));
+			}
+		}
+
+		void RemoveRegistry()
+		{
+			HKEY _hkey = HKEY_CURRENT_USER;
+
+			RegOpenKeyA(HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows\\Currentversion\\Run", &_hkey);
+
+			RegDeleteValueA(_hkey, "Eyes Protection Remimder");
+
+			RegCloseKey(_hkey);
+		}
 	}
 
 	Config::Config() :
@@ -117,6 +143,15 @@ namespace EPR
 
 	void Config::SetStartupWithWindows(bool _startupWithWindows)
 	{
+		if (!m_startupWithWindows && _startupWithWindows)
+		{
+			Priv::AddRegistry();
+		}
+		else if (m_startupWithWindows && !_startupWithWindows)
+		{
+			Priv::RemoveRegistry();
+		}
+
 		m_startupWithWindows = _startupWithWindows;
 	}
 
