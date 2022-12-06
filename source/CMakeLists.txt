@@ -1,16 +1,8 @@
 cmake_minimum_required(VERSION 3.10.2)
 
-project(EPR)
+project(EPR VERSION 4.1.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-if (WIN32)
-    set(EPR_OS Windows)
-elseif(UNIX AND NOT APPLE)
-    set(EPR_OS Linux)
-elseif(APPLE)
-    set(EPR_OS macOS)
-endif()
 
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
     set(EPR_ARCH x64)
@@ -42,4 +34,4 @@ set(EPR_ICON ${CMAKE_SOURCE_DIR}/assets/EPR_icon.rc)
 add_executable(${PROJECT_NAME} WIN32 MACOSX_BUNDLE ${EPR_SOURCES} ${EPR_ICON})
 target_link_libraries(${PROJECT_NAME} PUBLIC wx::core wx::base)
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME Eyes_Protection_Reminder_v4.1.0.${EPR_OS}.${EPR_ARCH})
+set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME Eyes_Protection_Reminder_v4.1.0.Windows.${EPR_ARCH})

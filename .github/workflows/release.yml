@@ -23,7 +23,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build:
-    name: ${{ needs.update_release_draft.outputs.tag_name }}.Release.Windows.${{ matrix.architecture }}
+    name: Release.Windows.${{ matrix.architecture }}
     needs: update_release_draft
     runs-on: windows-latest
   
@@ -62,12 +62,5 @@ jobs:
       uses: TheDoctor0/zip-release@0.6.2
       with:
         type: zip
-        filename: Eyes_Protection_Reminder_${{ needs.update_release_draft.outputs.tag_name }}.Windows.${{ matrix.architecture }}.zip
-        path: ${{ github.workspace }}\build\source\Eyes_Protection_Reminder_${{ needs.update_release_draft.outputs.tag_name }}.Windows.${{ matrix.architecture }}.exe
-    
-    - name: Upload built executable file
-      uses: meeDamian/github-release@v2.0.3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        tag: ${{ needs.update_release_draft.outputs.tag_name }}
-        files: Eyes_Protection_Reminder_${{ needs.update_release_draft.outputs.tag_name }}.Windows.${{ matrix.architecture }}.zip
+        filename: Eyes_Protection_Reminder_v4.1.0.Windows.${{ matrix.architecture }}.zip
+        path: ${{ github.workspace }}\build\source\Eyes_Protection_Reminder_v4.1.0.Windows.${{ matrix.architecture }}.exe
