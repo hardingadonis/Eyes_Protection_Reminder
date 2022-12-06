@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      tag_name: ${{ steps.create_draft_release.output.tag_name }}
+      tag_name: ${{ steps.create_draft_release.outputs.tag_name }}
 
     steps:
     - name: Create New Draft
@@ -23,7 +23,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build:
-    name: Release.Windows.${{ matrix.architecture }}.${{ needs.update_release_draft.create_draft_release.outputs.tag_name }}
+    name: Release.Windows.${{ matrix.architecture }}.${{ needs.update_release_draft.outputs.tag_name }}
     needs: update_release_draft
     runs-on: windows-latest
   
