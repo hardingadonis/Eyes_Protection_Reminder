@@ -6,7 +6,9 @@
 ![Languages](https://img.shields.io/github/languages/top/hardingadonis/Eyes_Protection_Reminder?style=flat)
 ![Repo Size](https://img.shields.io/github/repo-size/hardingadonis/Eyes_Protection_Reminder?style=flat)
 ![License](https://img.shields.io/github/license/hardingadonis/Eyes_Protection_Reminder?style=flat)
-[![Download](https://img.shields.io/github/downloads/hardingadonis/Eyes_Protection_Reminder/v4.1.x/total?style=flat)](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.x)
+[![Download](https://img.shields.io/github/downloads/hardingadonis/Eyes_Protection_Reminder/v4.1.0/total?style=flat)](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.0)
+
+![EPR_banner](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/EPR_banner.png)
 
 ## Introduction
 
@@ -20,15 +22,20 @@ Don't worry, that tool is for you!!!
 
 Let see...
 
-## Images
+## Showcase
 
-![EPR_image_1](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/image_1.png)  
-![EPR_image_2](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/image_2.png)  
-![EPR_image_3](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/image_3.png)
+<p align="center">
+  <img src="https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/EPR_showcase.png" />
+</p>
 
 ## Requirements
-- Windows OS (just only Windows, not Linux)
-- Visual Studio (any version)
+- Windows OS (just only Windows, not Linux or macOS)
+- C++ Compiler such as:
+  - Microsoft Visual C++
+  - Intel C++ Compiler
+  - GNU Compiler Collection
+  - Clang
+  - ...
 - CMake 3.10.2 or above
 
 ## Install
@@ -48,17 +55,15 @@ git submodule update --init --recursive
 ```bash
 mkdir build
 cd build
-cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DwxUSE_STL=ON -DwxBUILD_COMPATIBILITY="3.1" -DwxBUILD_SHARED=OFF -G"Visual Studio 17 2022" -Ax64
-cmake --build . --config MinSizeRel
+cmake ..
+cmake --build . --target EPR
 ```
 
 - Run project
-```
-Find an application that named Eyes_Protection_Reminder_v4.1.0.exe
-Now, run it!!!
-```
+  - Find an application that named `Eyes_Protection_Reminder_v4.1.0.Windows.x86.exe` or `Eyes_Protection_Reminder_v4.1.0.Windows.x64.exe`
+  - Now, run it!!!
 
-- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.x)
+- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.0)
 
 ## License
 
@@ -83,3 +88,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## External libraries and assets used by Eyes Protection Reminder
+
+- *[wxWidgets](https://github.com/wxWidgets/wxWidgets)* is under the [wxWindows Library Licence](https://opensource.org/licenses/wxwindows.php)
+
+- *[EPR_icon](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/assets/EPR_icon.png)* is under the [flaticon](https://www.flaticon.com/free-icon/eyes_599324)
