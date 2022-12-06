@@ -1,14 +1,16 @@
 # Eyes Protection Reminder
 > With 20:20:20 rule, this tool will get rid of your eyes problems. Enjoys!!!  
 
-[![Build Status](https://img.shields.io/github/workflow/status/hardingadonis/Eyes_Protection_Reminder/Build%20Project?style=for-the-badge)](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions)
-[![Release Status](https://img.shields.io/github/workflow/status/hardingadonis/Eyes_Protection_Reminder/Lastest%20Release?label=RELEASE&style=for-the-badge)](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions)
-![Languages](https://img.shields.io/github/languages/top/hardingadonis/Eyes_Protection_Reminder?style=for-the-badge)
-![Repo Size](https://img.shields.io/github/repo-size/hardingadonis/Eyes_Protection_Reminder?style=for-the-badge)
-![License](https://img.shields.io/github/license/hardingadonis/Eyes_Protection_Reminder?style=for-the-badge)
-[![Download](https://img.shields.io/github/downloads/hardingadonis/Eyes_Protection_Reminder/v4.x.x/total?style=for-the-badge)](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.x.x)
+[![Build Status](https://img.shields.io/github/workflow/status/hardingadonis/Eyes_Protection_Reminder/Build%20Project?style=flat)](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions)
+[![Release Status](https://img.shields.io/github/workflow/status/hardingadonis/Eyes_Protection_Reminder/Lastest%20Release?label=release&style=flat)](https://github.com/hardingadonis/Eyes_Protection_Reminder/actions)
+![Languages](https://img.shields.io/github/languages/top/hardingadonis/Eyes_Protection_Reminder?style=flat)
+![Repo Size](https://img.shields.io/github/repo-size/hardingadonis/Eyes_Protection_Reminder?style=flat)
+![License](https://img.shields.io/github/license/hardingadonis/Eyes_Protection_Reminder?style=flat)
+[![Download](https://img.shields.io/github/downloads/hardingadonis/Eyes_Protection_Reminder/v4.1.0/total?style=flat)](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.0)
 
-## I. Introduction
+![EPR_banner](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/EPR_banner.png)
+
+## Introduction
 
 You are a student?
 
@@ -20,18 +22,23 @@ Don't worry, that tool is for you!!!
 
 Let see...
 
-## II. Images
+## Showcase
 
-![EPR_image_1](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/image_1.png)  
-![EPR_image_2](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/image_2.png)  
-![EPR_image_3](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/image_3.png)
+<p align="center">
+  <img src="https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/EPR_showcase.png" />
+</p>
 
-## III. Requirements
-- Windows OS (just only Windows, not Linux)
-- Visual Studio (any version)
+## Requirements
+- Windows OS (just only Windows, not Linux or macOS)
+- C++ Compiler such as:
+  - Microsoft Visual C++
+  - Intel C++ Compiler
+  - GNU Compiler Collection
+  - Clang
+  - ...
 - CMake 3.10.2 or above
 
-## IV. Install
+## Install
 
 - Clone repository
 ```bash
@@ -48,23 +55,21 @@ git submodule update --init --recursive
 ```bash
 mkdir build
 cd build
-cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DwxBUILD_SHARED=OFF -G"Visual Studio 17 2022" -Ax64
-cmake --build . --config MinSizeRel
+cmake ..
+cmake --build . --target EPR
 ```
 
 - Run project
-```
-Find an application that named EPR.exe
-Now, run it!!!
-```
+  - Find an application that named `Eyes_Protection_Reminder_v4.1.0.Windows.x86.exe` or `Eyes_Protection_Reminder_v4.1.0.Windows.x64.exe`
+  - Now, run it!!!
 
-- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.x.x)
+- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.0)
 
-## V. License
+## License
 
 MIT License
 
-Copyright (c) 2022 [Harding Adonis](https://github.com/hardingadonis), [hoanghy0112](https://github.com/hoanghy0112), [AlexPhoenix45](https://github.com/AlexPhoenix45)
+Copyright (c) 2022 [Minh Vương](https://github.com/hardingadonis)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -83,3 +88,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## External libraries and assets used by Eyes Protection Reminder
+
+- *[wxWidgets](https://github.com/wxWidgets/wxWidgets)* is under the [wxWindows Library Licence](https://opensource.org/licenses/wxwindows.php)
+
+- *[EPR_icon](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/assets/EPR_icon.png)* is under the [flaticon](https://www.flaticon.com/free-icon/eyes_599324)
