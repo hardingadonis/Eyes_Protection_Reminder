@@ -14,23 +14,10 @@ jobs:
 
     steps:
     - name: Create New Draft
+      id: create_draft_release
       uses: release-drafter/release-drafter@v5.21.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  get_url_draft:
-    name: Get URL of Release Draft
-    needs: update_release_draft
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Get URL of draft dhat just created
-      uses: cardinalby/git-get-release-action@1.2.4
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-      with:
-        latest: false
-        draft: true
 
   build:
     name: Release.Windows.${{ matrix.architecture }}
@@ -68,9 +55,16 @@ jobs:
       working-directory: ${{ github.workspace }}\build
       run: cmake --build . --config MinSizeRel --target EPR
     
-    - name: Zip executable files
+    - name: Zip executable file
       uses: TheDoctor0/zip-release@0.6.2
       with:
         type: zip
-        filename: Eyes_Protection_Reminder_v4.1.0.Windows.${{ matrix.architecture }}.zip
-        path: ${{ github.workspace }}\build\source\Eyes_Protection_Reminder_v4.1.0.Windows.${{ matrix.architecture }}.exe
+        filename: Eyes_Protection_Reminder_${{ jobs.update_release_draft.create_draft_release.outputs.tag_name }}.Windows.${{ matrix.architecture }}.zip
+        path: ${{ github.workspace }}\build\source\Eyes_Protection_Reminder_${{ jobs.update_release_draft.create_draft_release.outputs.tag_name }}.Windows.${{ matrix.architecture }}.exe
+    
+    - name: Upload built executable file
+      uses: meeDamian/github-release@v2.0.3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        tag: ${{ jobs.update_release_draft.create_draft_release.outputs.tag_name }}
+        files: Eyes_Protection_Reminder_${{ jobs.update_release_draft.create_draft_release.outputs.tag_name }}.Windows.${{ matrix.architecture }}.zip
