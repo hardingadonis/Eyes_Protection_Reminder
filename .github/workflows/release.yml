@@ -21,7 +21,7 @@ jobs:
 
   build:
     name: Release.Windows.${{ matrix.architecture }}
-    needs: get_url_draft
+    needs: update_release_draft
     runs-on: windows-latest
   
     strategy:
