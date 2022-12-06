@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      tag_name: ${{ steps.create_draft_release.outputs.tag_name }}
+      tag_name: ${{ steps.create_draft_release.tag_name }}
 
     steps:
     - name: Create New Draft
