@@ -213,6 +213,11 @@ namespace EPR
 		// Delete this pointer
 		delete _config;
 		_config = nullptr;
+
+		// After load config from file, checking again
+		m_timeRemaining		= (m_timeRemaining < 1200 || m_timeRemaining > 3600) ? Priv::TIME_REMAINING : m_timeRemaining;
+		m_restedRemaining	= (m_restedRemaining < 20 || m_restedRemaining > 300) ? Priv::RESTED_REMAINING : m_restedRemaining;
+		m_timeNotification	= (m_timeNotification < 10 || m_timeNotification > 60) ? Priv::TIME_NOTIFICATION : m_timeNotification;
 	}
 
 	void Config::LoadDefaultConfig()
