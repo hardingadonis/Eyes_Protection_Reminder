@@ -63,8 +63,8 @@ jobs:
       uses: TheDoctor0/zip-release@0.6.2
       with:
         type: zip
-        filename: Eyes_Protection_Reminder_v4.1.0.Windows.${{ matrix.architecture }}.zip
-        path: ${{ github.workspace }}\build\source\Eyes_Protection_Reminder_v4.1.0.Windows.${{ matrix.architecture }}.exe
+        filename: Eyes_Protection_Reminder_v4.1.1.Windows.${{ matrix.architecture }}.zip
+        path: ${{ github.workspace }}\build\source\Eyes_Protection_Reminder_v4.1.1.Windows.${{ matrix.architecture }}.exe
     
     - name: Upload built executable file
       uses: tanyagray/action-upload-release-asset@v1.1.3
@@ -72,8 +72,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ needs.update_release_draft.outputs.upload_url }}
-        asset_path: ${{ github.workspace }}\Eyes_Protection_Reminder_v4.1.0.Windows.${{ matrix.architecture }}.zip
-        asset_name: Eyes_Protection_Reminder_v4.1.0.Windows.${{ matrix.architecture }}.zip
+        asset_path: ${{ github.workspace }}\Eyes_Protection_Reminder_v4.1.1.Windows.${{ matrix.architecture }}.zip
+        asset_name: Eyes_Protection_Reminder_v4.1.1.Windows.${{ matrix.architecture }}.zip
         asset_content_type: application/zip
   
   publish_release:

@@ -6,7 +6,7 @@
 ![Languages](https://img.shields.io/github/languages/top/hardingadonis/Eyes_Protection_Reminder?style=flat)
 ![Repo Size](https://img.shields.io/github/repo-size/hardingadonis/Eyes_Protection_Reminder?style=flat)
 ![License](https://img.shields.io/github/license/hardingadonis/Eyes_Protection_Reminder?style=flat)
-[![Download](https://img.shields.io/github/downloads/hardingadonis/Eyes_Protection_Reminder/v4.1.0/total?style=flat)](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.0)
+[![Download](https://img.shields.io/github/downloads/hardingadonis/Eyes_Protection_Reminder/v4.1.1/total?style=flat)](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.1)
 
 ![EPR_banner](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/imgs/EPR_banner.png)
 
@@ -60,10 +60,16 @@ cmake --build . --target EPR
 ```
 
 - Run project
-  - Find an application that named `Eyes_Protection_Reminder_v4.1.0.Windows.x86.exe` or `Eyes_Protection_Reminder_v4.1.0.Windows.x64.exe`
+  - Find an application that named `Eyes_Protection_Reminder_v4.1.1.Windows.x86.exe` or `Eyes_Protection_Reminder_v4.1.1.Windows.x64.exe`
   - Now, run it!!!
 
-- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.0)
+- Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.1)
+
+## Usage
+
+You do not know how to use this tool?
+
+Don't worry, click here to know usage: [Usage](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/docs/Usage.md) or [Usage (for Vietnamese)](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/docs/Usage_vi_VN.md)
 
 ## License
 

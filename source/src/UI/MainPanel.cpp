@@ -99,7 +99,7 @@ namespace EPR
 		{
 			// Show the notification
 			m_taskBarIcon->ShowBalloon(
-				"Eyes Protection Remimder",
+				"Eyes Protection Reminder",
 				Config::GetInstance()->GetStringNotification(),
 				Config::GetInstance()->GetTimeNotification() * 1000,
 				wxICON_INFORMATION,
@@ -134,6 +134,28 @@ namespace EPR
 			s_timer_time_remaining = Config::GetInstance()->GetTimeRemaining();
 			s_timer_rested_remaining = Config::GetInstance()->GetRestedRemaining();
 		}
+
+		m_restedValue->SetLabel(wxString::Format(
+			"%s%d:%s%d",
+			s_timer_rested_remaining / 60 < 10 ? "0" : "",
+			s_timer_rested_remaining / 60,
+			s_timer_rested_remaining % 60 < 10 ? "0" : "",
+			s_timer_rested_remaining % 60
+		));
+	}
+
+	void MainPanel::ResetTimer()
+	{
+		s_timer_time_remaining = Config::GetInstance()->GetTimeRemaining();
+		s_timer_rested_remaining = Config::GetInstance()->GetRestedRemaining();
+
+		m_timerValue->SetLabel(wxString::Format(
+			"%s%d:%s%d",
+			s_timer_time_remaining / 60 < 10 ? "0" : "",
+			s_timer_time_remaining / 60,
+			s_timer_time_remaining % 60 < 10 ? "0" : "",
+			s_timer_time_remaining % 60
+		));
 
 		m_restedValue->SetLabel(wxString::Format(
 			"%s%d:%s%d",
@@ -194,27 +216,5 @@ namespace EPR
 
 		m_timer->Bind(wxEVT_TIMER, &EPR::MainPanel::OnTimerElapsed, this);
 		m_rested->Bind(wxEVT_TIMER, &EPR::MainPanel::OnRestedElapsed, this);
-	}
-
-	void MainPanel::ResetTimer()
-	{
-		s_timer_time_remaining = Config::GetInstance()->GetTimeRemaining();
-		s_timer_rested_remaining = Config::GetInstance()->GetRestedRemaining();
-
-		m_timerValue->SetLabel(wxString::Format(
-			"%s%d:%s%d",
-			s_timer_time_remaining / 60 < 10 ? "0" : "",
-			s_timer_time_remaining / 60,
-			s_timer_time_remaining % 60 < 10 ? "0" : "",
-			s_timer_time_remaining % 60
-		));
-
-		m_restedValue->SetLabel(wxString::Format(
-			"%s%d:%s%d",
-			s_timer_rested_remaining / 60 < 10 ? "0" : "",
-			s_timer_rested_remaining / 60,
-			s_timer_rested_remaining % 60 < 10 ? "0" : "",
-			s_timer_rested_remaining % 60
-		));
 	}
 }

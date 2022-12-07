@@ -1,5 +1,5 @@
-name-template: 'Eyes_Protection_Reminder_v$NEXT_MINOR_VERSION 👀'
-tag-template: v$NEXT_MINOR_VERSION
+name-template: 'Eyes_Protection_Reminder_v$NEXT_PATCH_VERSION 👀'
+tag-template: v$NEXT_PATCH_VERSION
 categories:
   - title: '🚀 Features'
     labels:
@@ -18,7 +18,7 @@ template: |
 
   $CHANGES
 
-  **Full Changelog**: [`$PREVIOUS_TAG...v$NEXT_MINOR_VERSION`](https://github.com/hardingadonis/Eyes_Protection_Reminder/compare/$PREVIOUS_TAG...v$NEXT_MINOR_VERSION)
+  **Full Changelog**: [`$PREVIOUS_TAG...v$NEXT_PATCH_VERSION`](https://github.com/hardingadonis/Eyes_Protection_Reminder/compare/$PREVIOUS_TAG...v$NEXT_PATCH_VERSION)
 
   ## Contributors
 
