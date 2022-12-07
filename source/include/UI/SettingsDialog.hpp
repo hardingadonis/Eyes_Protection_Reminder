@@ -29,12 +29,14 @@
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
 
+#include <UI/MainPanel.hpp>
+
 namespace EPR
 {
 	class SettingsDialog : public wxDialog
 	{
 	public:
-		SettingsDialog(wxWindow* _parent);
+		SettingsDialog(wxWindow* _parent, MainPanel* _mainPanel);
 		virtual ~SettingsDialog() = default;
 
 		void OnSaveButtonPressed(wxCommandEvent& _event);
@@ -48,6 +50,8 @@ namespace EPR
 		wxSpinCtrl*		m_timeNotification;
 		wxTextCtrl*		m_stringNotification;
 		wxCheckBox*		m_startupWithWindows;
+
+		MainPanel*		m_mainPanel;
 
 	public:
 		wxDECLARE_EVENT_TABLE();

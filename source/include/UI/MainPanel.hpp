@@ -42,10 +42,10 @@ namespace EPR
 		void OnTimerElapsed(wxTimerEvent& _event);
 		void OnRestedElapsed(wxTimerEvent& _event);
 
+		void ResetTimer();
+
 	private:
 		void CreateControls();
-
-		void ResetTimer();
 
 	private:
 		wxStaticText*	m_timerValue;

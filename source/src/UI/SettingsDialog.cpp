@@ -40,8 +40,9 @@ namespace EPR
         EVT_BUTTON(EPR_Button_Save, SettingsDialog::OnSaveButtonPressed)
     wxEND_EVENT_TABLE()
 
-    SettingsDialog::SettingsDialog(wxWindow* _parent) :
-        wxDialog(_parent, wxID_ANY, "Eyes Protection Reminder - Settings")
+    SettingsDialog::SettingsDialog(wxWindow* _parent, MainPanel* _mainPanel) :
+        wxDialog(_parent, wxID_ANY, "Eyes Protection Reminder - Settings"),
+        m_mainPanel(_mainPanel)
     {
         Center();
         CreateControls();
@@ -57,6 +58,8 @@ namespace EPR
         Config::GetInstance()->SetStartupWithWindows(m_startupWithWindows->GetValue());
 
         Config::GetInstance()->Save();
+
+        m_mainPanel->ResetTimer();
 
         Destroy();
     }
