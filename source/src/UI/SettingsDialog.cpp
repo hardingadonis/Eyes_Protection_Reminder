@@ -41,7 +41,7 @@ namespace EPR
     wxEND_EVENT_TABLE()
 
     SettingsDialog::SettingsDialog(wxWindow* _parent) :
-        wxDialog(_parent, wxID_ANY, "Eyes Protection Remimder - Settings")
+        wxDialog(_parent, wxID_ANY, "Eyes Protection Reminder - Settings")
     {
         Center();
         CreateControls();

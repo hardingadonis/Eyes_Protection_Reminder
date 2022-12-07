@@ -54,7 +54,7 @@ namespace EPR
 			{
 				std::string _executablePath = wxStandardPaths::Get().GetExecutablePath().ToStdString();
 
-				_key = RegSetValueExA(_hkey, "Eyes Protection Remimder", 0, REG_SZ, (BYTE*)_executablePath.c_str(), strlen(_executablePath.c_str()));
+				_key = RegSetValueExA(_hkey, "Eyes Protection Reminder", 0, REG_SZ, (BYTE*)_executablePath.c_str(), strlen(_executablePath.c_str()));
 			}
 		}
 
@@ -64,7 +64,7 @@ namespace EPR
 
 			RegOpenKeyA(HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows\\Currentversion\\Run", &_hkey);
 
-			RegDeleteValueA(_hkey, "Eyes Protection Remimder");
+			RegDeleteValueA(_hkey, "Eyes Protection Reminder");
 
 			RegCloseKey(_hkey);
 		}
@@ -157,7 +157,7 @@ namespace EPR
 
 	void Config::Save()
 	{
-		wxFileConfig* _config = new wxFileConfig("Eyes Protection Remimder", wxEmptyString, Priv::PATH + Priv::FILE);
+		wxFileConfig* _config = new wxFileConfig("Eyes Protection Reminder", wxEmptyString, Priv::PATH + Priv::FILE);
 
 		_config->SetPath("/UserData");
 		_config->Write("TIME_REMAINING", m_timeRemaining);
@@ -199,7 +199,7 @@ namespace EPR
 		}
 
 		// If done, load config from file
-		wxFileConfig* _config = new wxFileConfig("Eyes Protection Remimder", wxEmptyString, Priv::PATH + Priv::FILE);
+		wxFileConfig* _config = new wxFileConfig("Eyes Protection Reminder", wxEmptyString, Priv::PATH + Priv::FILE);
 
 		_config->SetPath("/UserData");
 		_config->Read("TIME_REMAINING", &m_timeRemaining);

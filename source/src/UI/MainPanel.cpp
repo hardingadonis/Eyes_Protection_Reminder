@@ -99,7 +99,7 @@ namespace EPR
 		{
 			// Show the notification
 			m_taskBarIcon->ShowBalloon(
-				"Eyes Protection Remimder",
+				"Eyes Protection Reminder",
 				Config::GetInstance()->GetStringNotification(),
 				Config::GetInstance()->GetTimeNotification() * 1000,
 				wxICON_INFORMATION,

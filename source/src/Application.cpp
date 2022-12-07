@@ -60,10 +60,10 @@ namespace EPR
         }
 
         // Set name for this tool
-        SetAppName("Eyes Protection Remimder");
+        SetAppName("Eyes Protection Reminder");
 
         // Create the main frame
-        m_mainFrame = new MainFrame("Eyes Protection Remimder - v4.1.0", wxSize(500, 350));
+        m_mainFrame = new MainFrame("Eyes Protection Reminder - v4.1.0", wxSize(500, 350));
 
         if (m_mainFrame == nullptr)
         {
