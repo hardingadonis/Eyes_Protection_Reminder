@@ -100,7 +100,7 @@ namespace EPR
 
 		// Set the information for about dialog
 		_aboutInfo.SetName(wxTheApp->GetAppName());
-		_aboutInfo.SetVersion("- v4.1.0");
+		_aboutInfo.SetVersion("- v4.1.1");
 		_aboutInfo.SetIcon(s_EPR_icon_64);
 		_aboutInfo.SetCopyright("Copyright (c) 2022 " + wxString::FromUTF8("Minh Vương.") + "\nAll rights reserved.");
 		_aboutInfo.SetDescription("A small tool to remind you to\nprotect your eyes with the 20:20:20 rule.");
