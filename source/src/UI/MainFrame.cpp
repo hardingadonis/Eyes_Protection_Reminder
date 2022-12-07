@@ -89,7 +89,7 @@ namespace EPR
 
 	void MainFrame::OnMenuSettings(wxCommandEvent& _event)
 	{
-		(new SettingsDialog(this))->ShowModal();
+		(new SettingsDialog(this, m_mainPanel))->ShowModal();
 
 		_event.Skip();
 	}
