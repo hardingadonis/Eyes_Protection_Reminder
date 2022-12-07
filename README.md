@@ -65,6 +65,12 @@ cmake --build . --target EPR
 
 - Or, you can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.1)
 
+## Usage
+
+You do not know how to use this tool?
+
+Don't worry, click here to know usage: [Usage](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/docs/Usage.md) or [Usage (for Vietnamese)](https://github.com/hardingadonis/Eyes_Protection_Reminder/blob/main/docs/Usage_vi_VN.md)
+
 ## License
 
 MIT License
