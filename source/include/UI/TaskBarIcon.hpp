@@ -40,6 +40,8 @@ namespace EPR
 		void OnMenuSource(wxCommandEvent& _event);
 		void OnMenuExit(wxCommandEvent& _event);
 
+		void OnLeftButtonDClick(wxTaskBarIconEvent& _event);
+
 	protected:
 		wxMenu* CreatePopupMenu() override;
 

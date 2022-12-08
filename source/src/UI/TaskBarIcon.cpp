@@ -39,6 +39,7 @@ namespace EPR
 		EVT_MENU(EPR_Menu_Restore, TaskBarIcon::OnMenuRestore)
 		EVT_MENU(EPR_Menu_Source, TaskBarIcon::OnMenuSource)
 		EVT_MENU(EPR_Menu_Exit, TaskBarIcon::OnMenuExit)
+		EVT_TASKBAR_LEFT_DCLICK(TaskBarIcon::OnLeftButtonDClick)
 	wxEND_EVENT_TABLE()
 
 	TaskBarIcon::TaskBarIcon(wxWindow* _parent, wxTaskBarIconType _iconType) :
@@ -64,6 +65,13 @@ namespace EPR
 	void TaskBarIcon::OnMenuExit(wxCommandEvent& _event)
 	{
 		m_parent->Close(true);
+
+		_event.Skip();
+	}
+
+	void TaskBarIcon::OnLeftButtonDClick(wxTaskBarIconEvent& _event)
+	{
+		m_parent->Show();
 
 		_event.Skip();
 	}
