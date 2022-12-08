@@ -13,7 +13,7 @@
 
 ### Download Eyes Protection Reminder
 
-You can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.1).
+You can download the binary in [here](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.2).
 
 Choose one of two:
 
