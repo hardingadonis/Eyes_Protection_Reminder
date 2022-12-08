@@ -13,7 +13,7 @@
 
 ### Tải Eyes Protection Reminder
 
-Bạn có thể tải **Eyes Protection Reminder** [tại đây](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.1).
+Bạn có thể tải **Eyes Protection Reminder** [tại đây](https://github.com/hardingadonis/Eyes_Protection_Reminder/releases/tag/v4.1.2).
 
 Chọn một trong hai:
 
