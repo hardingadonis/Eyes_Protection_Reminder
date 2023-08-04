@@ -37,3 +37,11 @@ jobs:
     - name: Build project
       working-directory: ${{ github.workspace }}\build
       run: cmake --build . --config Debug --target EPR
+  
+  lint:
+    name: Linter
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Super-Linter
+      uses: super-linter/super-linter@v5.2.0
